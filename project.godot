@@ -15,6 +15,13 @@ run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=576
+window/stretch/mode="viewport"
+window/stretch/scale=2.0
+
 [input]
 
 run_right={
