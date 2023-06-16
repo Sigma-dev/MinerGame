@@ -25,6 +25,9 @@ func updateAnimation():
 	if !is_on_floor():
 		anim = "jump"
 	animation_player.play(anim)
+	
+func is_player():
+	return true
 
 func endMining():
 	mining_cast.force_shapecast_update()

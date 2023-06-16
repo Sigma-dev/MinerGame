@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var particles: CPUParticles2D = $CPUParticles2D
 @export var sparks: PackedScene
+@export var drop: PackedScene
 @onready var sprite: Sprite2D = $Sprite2D
 var hp = 30
 var particles_to_destroy = []
@@ -14,6 +15,9 @@ func get_hit(damage, point = null):
 	hit_visuals(damage, point)
 	hp -= damage
 	if hp <= 0:
+		var d = drop.instantiate()
+		d.global_position = global_position
+		get_tree().root.get_child(0).add_child(d);
 		queue_free()
 	flash_amount = 1
 	
