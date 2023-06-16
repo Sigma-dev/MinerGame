@@ -4,6 +4,7 @@ var rng = RandomNumberGenerator.new()
 @export var to_spawn: PackedScene
 @export var spawn_protection: PackedScene
 @onready var tilemap: TileMap = get_parent()
+@onready var shapecast: ShapeCast2D = $ShapeCast2D
 
 func get_ground_tiles():
 	var coords = [
@@ -32,8 +33,13 @@ func spawn_on_random_ground():
 		var ontop_pos = Vector2i(tile.x, tile.y - 1)
 		if (tilemap.get_cell_tile_data(0, ontop_pos) != null):
 			continue
+		shapecast.global_position = to_global(tilemap.map_to_local(ontop_pos))
+		shapecast.force_shapecast_update()
+		print(shapecast.get_collision_count())
+		if (shapecast.get_collision_count() > 0):
+			continue
 		var spawn_pos = to_global((tilemap.map_to_local(tile) + tilemap.map_to_local(ontop_pos)) / 2)
-		spawn_at_pos(spawn_pos, spawn_protection)
+		spawn_at_pos(spawn_pos, to_spawn)
 		break
 	#get the position of the top side of the selected tile by dividing the position of the tile on top of it with  map_to_local
 	#spawn object on the top side coordinates
