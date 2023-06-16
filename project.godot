@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Forager Wannabe"
-run/main_scene="res://node_2d.tscn"
+run/main_scene="res://scenes/node_2d.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://ressources/icon.svg"
 
 [display]
 
