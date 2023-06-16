@@ -11,16 +11,10 @@ var spawn_time_random_range = 3.0
 
 func get_ground_tiles():
 	var coords = [
-		Vector2i(1, 2),
-		Vector2i(2, 1),
 		Vector2i(3, 1),
 		Vector2i(4, 1),
-		Vector2i(5, 1),
 		Vector2i(8, 1),
-		Vector2i(6, 2),
-		Vector2i(8, 3),
 		Vector2i(9, 3),
-		Vector2i(10, 3)
 	]
 	var tiles = []
 	for coord in coords:
@@ -57,11 +51,8 @@ func spawn_at_pos(pos, object = to_spawn, ):
 
 func handle_spawning(delta):
 	if elapsed > next_spawn_time:
-		print("pop")
 		spawn_on_random_ground()		
 		next_spawn_time = elapsed + rng.randf_range(spawn_time_min, spawn_time_min + spawn_time_random_range)
-	print("elapsed: " + str(elapsed))
-	print("next:" + str(next_spawn_time))
 	elapsed += delta
 
 func _physics_process(delta):

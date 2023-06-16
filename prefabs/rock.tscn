@@ -1,6 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwstnlgim6mqc"]
+[gd_scene load_steps=7 format=3 uid="uid://bwstnlgim6mqc"]
 
+[ext_resource type="Script" path="res://scripts/rock.gd" id="1_47xsf"]
 [ext_resource type="Texture2D" uid="uid://bj0oirut6kdcf" path="res://ressources/rock.png" id="1_xl4rk"]
+[ext_resource type="PackedScene" uid="uid://nkccxmrx0g6y" path="res://prefabs/sparks.tscn" id="2_23hec"]
+[ext_resource type="Shader" path="res://prefabs/flash.gdshader" id="3_g3gj3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho6g4"]
+shader = ExtResource("3_g3gj3")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpxn"]
 size = Vector2(16, 16)
@@ -8,10 +16,13 @@ size = Vector2(16, 16)
 [node name="Rock" type="Node2D"]
 
 [node name="Rock" type="StaticBody2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -8)
+script = ExtResource("1_47xsf")
+sparks = ExtResource("2_23hec")
 
-[node name="Rock" type="Sprite2D" parent="Rock"]
+[node name="Sprite2D" type="Sprite2D" parent="Rock"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_ho6g4")
 texture = ExtResource("1_xl4rk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rock"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0x1qpnfiq3jq"]
+[gd_scene load_steps=11 format=3 uid="uid://0x1qpnfiq3jq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_pt5fu"]
 [ext_resource type="Texture2D" uid="uid://bckfotp31s5tq" path="res://ressources/miner.png" id="2_yunap"]
@@ -109,12 +109,14 @@ _data = {
 "run": SubResource("Animation_us4ih")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bgec"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, -37)
 script = ExtResource("1_pt5fu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 3)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_guxas")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -129,3 +131,8 @@ region_rect = Rect2(0, 0, 32, 32)
 libraries = {
 "": SubResource("AnimationLibrary_i0efr")
 }
+
+[node name="MiningCast" type="ShapeCast2D" parent="."]
+position = Vector2(15, 5)
+shape = SubResource("CircleShape2D_1bgec")
+target_position = Vector2(0, 0)
