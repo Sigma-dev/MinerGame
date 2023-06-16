@@ -2,9 +2,12 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 @export var to_spawn: PackedScene
-@export var spawn_protection: PackedScene
 @onready var tilemap: TileMap = get_parent()
 @onready var shapecast: ShapeCast2D = $ShapeCast2D
+var next_spawn_time = -1
+var elapsed = 0
+var spawn_time_min = 5.0
+var spawn_time_random_range = 3.0
 
 func get_ground_tiles():
 	var coords = [
@@ -24,37 +27,45 @@ func get_ground_tiles():
 		tiles += tilemap.get_used_cells_by_id(0, 0, coord)
 	return tiles
 
-func spawn_on_random_ground():
+func get_random_available_ground_tile():
 	var candidates = get_ground_tiles()
-	var iter = 0
-	while iter < 30:
-		iter += 1
-		var tile = candidates[randi() % candidates.size()]
+	randomize()
+	candidates.shuffle()
+	for tile in candidates:
 		var ontop_pos = Vector2i(tile.x, tile.y - 1)
 		if (tilemap.get_cell_tile_data(0, ontop_pos) != null):
 			continue
 		shapecast.global_position = to_global(tilemap.map_to_local(ontop_pos))
 		shapecast.force_shapecast_update()
-		print(shapecast.get_collision_count())
 		if (shapecast.get_collision_count() > 0):
 			continue
-		var spawn_pos = to_global((tilemap.map_to_local(tile) + tilemap.map_to_local(ontop_pos)) / 2)
-		spawn_at_pos(spawn_pos, to_spawn)
-		break
-	#get the position of the top side of the selected tile by dividing the position of the tile on top of it with  map_to_local
-	#spawn object on the top side coordinates
+		return tile
+	return null
+
+func spawn_on_random_ground():
+	var tile = get_random_available_ground_tile()
+	if (tile == null):
+		return
+	var top_tile = Vector2i(tile.x, tile.y - 1)
+	var spawn_pos = to_global((tilemap.map_to_local(tile) + tilemap.map_to_local(top_tile)) / 2)
+	spawn_at_pos(spawn_pos, to_spawn)
 
 func spawn_at_pos(pos, object = to_spawn, ):
 	var instance = object.instantiate()
 	instance.global_position = pos
-	get_tree().root.get_child(0).add_child(instance);
-	if instance.has_method("set_manager"):
-		instance.set_manager(self)
+	add_child(instance);
 
-func _ready():
-	get_ground_tiles()# Called every frame. 'delta' is the elapsed time since the previous frame.
+func handle_spawning(delta):
+	if elapsed > next_spawn_time:
+		print("pop")
+		spawn_on_random_ground()		
+		next_spawn_time = elapsed + rng.randf_range(spawn_time_min, spawn_time_min + spawn_time_random_range)
+	print("elapsed: " + str(elapsed))
+	print("next:" + str(next_spawn_time))
+	elapsed += delta
+
 func _physics_process(delta):
-	if to_spawn && Input.is_action_pressed("click"):
-		print("jump")
-		spawn_on_random_ground()
+	handle_spawning(delta)
+	#if to_spawn && Input.is_action_pressed("click"):
+
 	pass
