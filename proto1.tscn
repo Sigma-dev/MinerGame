@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://jtofvffdrk4i"]
+
+[ext_resource type="Script" path="res://scenes/Crawler.gd" id="1_g8vl1"]
+[ext_resource type="Texture2D" uid="uid://ca268da2oj7ps" path="res://ressources/icon.svg" id="2_7tjgp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud2si"]
+
+[node name="Line2D" type="Line2D"]
+points = PackedVector2Array(0, 0, 0, 0)
+
+[node name="Crawler" type="CharacterBody2D" parent="."]
+position = Vector2(-150, -26)
+script = ExtResource("1_g8vl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crawler"]
+shape = SubResource("RectangleShape2D_ud2si")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crawler"]
+scale = Vector2(0.157, 0.157)
+texture = ExtResource("2_7tjgp")
+
+[node name="RayLeft" type="RayCast2D" parent="Crawler"]
+position = Vector2(-10, 10)
+target_position = Vector2(0, 2)
+
+[node name="RayMid" type="RayCast2D" parent="Crawler"]
+position = Vector2(0, 10)
+target_position = Vector2(0, 2)
+
+[node name="RayRight" type="RayCast2D" parent="Crawler"]
+position = Vector2(10, 10)
+target_position = Vector2(0, 2)
