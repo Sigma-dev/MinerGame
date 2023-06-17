@@ -15,7 +15,6 @@ var edge_size = 0
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	var diff =  abs(a - b)
-	print(diff)
 	return diff <= epsilon
 
 func raycast(origin, target):
@@ -27,39 +26,45 @@ func wait_settle():
 	if !settled && ray_bot.get_collider():
 		settled = true
 	return settled
+	
+func handle_visuals():
+	if get_raycast_distance(ray_right) > 4 && get_raycast_distance(ray_right) <= 10:
+		visual_angle = rotation_degrees + -90
+	edge_size = get_edge_size()
+	if touched_ground_again && edge_size > 0:
+		visual_angle = rotation_degrees + edge_size * 90
+
+func rotate_to(rotation):
+	var t_rot = int(rotation_degrees + rotation) % 360 
+	var target = Quaternion.from_euler(Vector3(0, 0, deg_to_rad(t_rot)))
+	rotation_degrees = rad_to_deg(target.get_euler().z)
+	touched_ground_again = false
+	#current = t_rot
+	
+func new_rotate(rotation):
+	rotate(deg_to_rad(rotation))
+	touched_ground_again = false
+	visual_angle = rotation_degrees
 
 func _physics_process(delta):
-	
 	if !wait_settle():
 		return
+	handle_visuals()
+	var test = true
+	var rotated = true
 	if ray_bot.get_collider():
 		touched_ground_again = true
-	if !ray_bot.get_collider() && touched_ground_again && rotating == 0:
-		rotating = 1
-	#if !ray_mid.get_collider() && ray_bot.get_collider() && touched_ground_again:
-		#visual_angle = current + 45
-	if get_raycast_distance(ray_right) > 4 && get_raycast_distance(ray_right) <= 10:
-		visual_angle = current + -90
-	if get_raycast_distance(ray_right) <= 4 && touched_ground_again && rotating == 0:
-		rotating = -1
-	if rotating != 0:
-		var t_rot = (current + (90 * rotating)) % 360 
-		var target = Quaternion.from_euler(Vector3(0, 0, deg_to_rad(t_rot)))
-		rotation_degrees = rad_to_deg(target.get_euler().z)
-		touched_ground_again = false
-		current = t_rot
-		visual_angle = current
-		rotating = 0
-		print("rotated")
+	if !ray_bot.get_collider() && touched_ground_again:
+		new_rotate(90)
+	elif get_raycast_distance(ray_right) <= 4 && touched_ground_again:
+		new_rotate(-90)
 	else:
-		edge_size = get_edge_size()
-		if touched_ground_again && edge_size > 0:
-			print("edge set")
-			visual_angle = current + edge_size * 90
-			print(visual_angle)
-	print("start")
-	print(visual_angle)
-	velocity = transform.x * 20 #default 20
+		rotated = false
+	if rotated:
+		visual_angle = rotation_degrees
+	
+
+	velocity = transform.x * 50 #default 20
 	move_and_slide()
 
 func get_edge_size():
@@ -75,7 +80,7 @@ func get_edge_size():
 			left = ray_mid.global_position
 		else:
 			right = ray_mid.global_position
-	var edge =  ray_mid.global_position.distance_to(right_pos)
+	var edge = ray_mid.global_position.distance_to(right_pos)
 	var length = ray_bot.global_position.distance_to(right_pos)
 	ray_mid.global_position = right_pos
 	return (edge / length)

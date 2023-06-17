@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://6qqd5uk3hy64"]
 
-[ext_resource type="Script" path="res://scenes/Drop.gd" id="1_v124s"]
+[ext_resource type="Script" path="res://scripts/Drop.gd" id="1_bc10v"]
 [ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://ressources/small_rocks.png" id="3_0mxyo"]
 [ext_resource type="Shader" path="res://scripts/circle.gdshader" id="3_gxkh5"]
 
@@ -107,7 +107,7 @@ radius = 40.0
 [node name="Drop" type="RigidBody2D"]
 top_level = true
 lock_rotation = true
-script = ExtResource("1_v124s")
+script = ExtResource("1_bc10v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_apgiu")
