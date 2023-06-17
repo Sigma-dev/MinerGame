@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cne5jpp3qwjjq"]
+[gd_scene load_steps=14 format=3 uid="uid://cne5jpp3qwjjq"]
 
 [ext_resource type="Texture2D" uid="uid://dhb2553kn5nms" path="res://ressources/Rocky Roads/Tilesets/tileset_forest.png" id="1_m1pf0"]
 [ext_resource type="Script" path="res://scripts/TileSpawner.gd" id="2_d5cdx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwstnlgim6mqc" path="res://prefabs/rock.tscn" id="3_t8t2u"]
 [ext_resource type="Script" path="res://scenes/Crawler2.gd" id="5_6bwr6"]
 [ext_resource type="Texture2D" uid="uid://ca268da2oj7ps" path="res://ressources/icon.svg" id="6_sib7m"]
+[ext_resource type="Script" path="res://scenes/CrawlerVisuals.gd" id="7_8l5tu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wfgsy"]
 texture = ExtResource("1_m1pf0")
@@ -103,6 +104,7 @@ texture = ExtResource("1_m1pf0")
 6:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:4/0/physics_layer_0/angular_velocity = 0.0
 6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:4/0/physics_layer_0/polygon_1/points = PackedVector2Array(8, -3.5, 5.5, 0, 3, 3, 0.5, 5, -2.5, 7, -5, 8, -8, 8, -8, -4.5, -8, -8, 8, -8, 8, -4.5)
 8:3/0 = 0
 8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:3/0/physics_layer_0/angular_velocity = 0.0
@@ -170,7 +172,7 @@ scale = Vector2(0.668, 1250)
 texture = SubResource("GradientTexture1D_pulcs")
 
 [node name="Crawler2" type="CharacterBody2D" parent="."]
-position = Vector2(-150, -26)
+position = Vector2(-181, -26)
 script = ExtResource("5_6bwr6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crawler2"]
@@ -179,11 +181,16 @@ shape = SubResource("RectangleShape2D_ud2si")
 [node name="Sprite2D" type="Sprite2D" parent="Crawler2"]
 scale = Vector2(0.157, 0.157)
 texture = ExtResource("6_sib7m")
+script = ExtResource("7_8l5tu")
 
 [node name="RayBot" type="RayCast2D" parent="Crawler2"]
 position = Vector2(-10, 9)
 target_position = Vector2(0, 5)
 
+[node name="RayMid" type="RayCast2D" parent="Crawler2"]
+position = Vector2(10, 6)
+target_position = Vector2(0, 52)
+
 [node name="RayRight" type="RayCast2D" parent="Crawler2"]
 position = Vector2(9, 0)
-target_position = Vector2(2, 0)
+target_position = Vector2(15, 0)
