@@ -8,7 +8,6 @@ const FLOAT_EPSILON = 0.01
 @onready var ray_right: RayCast2D = $RayRight
 var settled = false
 var rotating = 0
-var current = 0
 var touched_ground_again = false
 var visual_angle = 0
 var edge_size = 0
@@ -27,44 +26,33 @@ func wait_settle():
 		settled = true
 	return settled
 	
-func handle_visuals():
+func handle_visuals(rotated):
 	if get_raycast_distance(ray_right) > 4 && get_raycast_distance(ray_right) <= 10:
 		visual_angle = rotation_degrees + -90
 	edge_size = get_edge_size()
 	if touched_ground_again && edge_size > 0:
 		visual_angle = rotation_degrees + edge_size * 90
+	if rotated:
+		visual_angle = rotation_degrees
 
 func rotate_to(rotation):
-	var t_rot = int(rotation_degrees + rotation) % 360 
-	var target = Quaternion.from_euler(Vector3(0, 0, deg_to_rad(t_rot)))
-	rotation_degrees = rad_to_deg(target.get_euler().z)
-	touched_ground_again = false
-	#current = t_rot
-	
-func new_rotate(rotation):
 	rotate(deg_to_rad(rotation))
 	touched_ground_again = false
-	visual_angle = rotation_degrees
 
 func _physics_process(delta):
 	if !wait_settle():
 		return
-	handle_visuals()
-	var test = true
 	var rotated = true
 	if ray_bot.get_collider():
 		touched_ground_again = true
 	if !ray_bot.get_collider() && touched_ground_again:
-		new_rotate(90)
+		rotate_to(90)
 	elif get_raycast_distance(ray_right) <= 4 && touched_ground_again:
-		new_rotate(-90)
+		rotate_to(-90)
 	else:
 		rotated = false
-	if rotated:
-		visual_angle = rotation_degrees
-	
-
-	velocity = transform.x * 50 #default 20
+	handle_visuals(rotated)
+	velocity = transform.x * 20 #default 20
 	move_and_slide()
 
 func get_edge_size():
@@ -90,22 +78,6 @@ func get_raycast_distance(ray: RayCast2D):
 
 func get_visual_angle():
 	return visual_angle
-
-func _draw():
-	draw_set_transform(Vector2(0.0, 0.0), 0)
-	#var local_pos = ray_bot.global_position + ray_bot.global_position.direction_to(ray_mid.global_position) * edge_size
-	#draw_circle_arc_poly(local_pos - global_position, 10, 0, 359, Color.WHITE)
-
-func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
-	var nb_points = 32
-	var points_arc = PackedVector2Array()
-	points_arc.push_back(center)
-	var colors = PackedColorArray([color])
-
-	for i in range(nb_points + 1):
-		var angle_point = deg_to_rad(angle_from + i * (angle_to - angle_from) / nb_points - 90)
-		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
-	draw_polygon(points_arc, colors)
 
 
 
