@@ -7,7 +7,7 @@ const FLOAT_EPSILON = 0.01
 @onready var ray_right: RayCast2D = $RayRight
 var settled = false
 var rotating = 0
-var current = 0.0
+var current = 0
 var touched_ground_again = false
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
@@ -34,19 +34,17 @@ func _physics_process(delta):
 	if ray_right.get_collider() && touched_ground_again && rotating == 0:
 		rotating = -1
 	if rotating != 0:
+		var t_rot = (current + (90 * rotating)) % 360 
 		var quat = Quaternion.from_euler(Vector3(0, 0, deg_to_rad(rotation_degrees)))
-		var target = Quaternion.from_euler(Vector3(0, 0, deg_to_rad(current + (90 * rotating))))
+		var target = Quaternion.from_euler(Vector3(0, 0, deg_to_rad(t_rot)))
 		rotation_degrees = rad_to_deg(quat.slerp(target, 0.5).get_euler().z)
 		print("start")
-		print(rotating)
-		#rotation_degrees = lerp(rotation_degrees, current + 90, 0.3)
-		var rot = fmod(float(int(round(rotation_degrees))), 360)
-		var t_rot = fmod(current + (90.0 * rotating), 360)
+		var rot = int(round(rotation_degrees))
 		print (rot)
-		print( t_rot)
-		if compare_floats(fmod(rot - t_rot, 360), 0.0):
+		print (t_rot)
+		if (rot - t_rot) % 360 == 0:
 			touched_ground_again = false
-			current += 90.0 * rotating
+			current = t_rot
 			rotating = 0
 		return
 	velocity = transform.x * 200
