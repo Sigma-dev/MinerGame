@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var particles: CPUParticles2D = $CPUParticles2D
 @export var sparks: PackedScene
 @export var drop: PackedScene
 @onready var sprite: Sprite2D = $Sprite2D

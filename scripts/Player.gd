@@ -5,8 +5,8 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -350.0
 var mining = false
 var facing_right = true
-@onready var animation_player = $AnimationPlayer
-@onready var sprite = $Sprite2D
+@onready var anim_ub = $Visuals/UpperBodyPlayer
+@onready var anim_lb = $Visuals/LowerBodyPlayer
 @onready var mining_cast = $MiningCast
 var state = "default"
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -17,14 +17,17 @@ func updateAnimation():
 		transform.x.x = 1
 	else:
 		transform.x.x = -1
-	var anim = "idle"
+	var ub = "idle"
+	var lb = "idle"
 	if abs(velocity.x) > 0:
-		anim = "run"
+		ub = "run"
+		lb = "run"
 	if state == "mining":
-		anim = "mine"
+		ub = "mine"
 	if !is_on_floor():
-		anim = "jump"
-	animation_player.play(anim)
+		ub = "jump"
+	anim_ub.play(ub)
+	anim_lb.play(lb)
 	
 func is_player():
 	return true
@@ -57,8 +60,7 @@ func handle_physics(delta):
 
 func _physics_process(delta):
 	handle_physics(delta)
-	if state == "default":
-		handle_movement()
+	handle_movement()
 	move_and_slide()
 	
 func _process(delta):
