@@ -1,10 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://vmwvf5p6g1ea"]
+[gd_scene load_steps=10 format=3 uid="uid://vmwvf5p6g1ea"]
 
 [ext_resource type="Script" path="res://scripts/Crawler.gd" id="1_8qld5"]
 [ext_resource type="Texture2D" uid="uid://ca268da2oj7ps" path="res://ressources/icon.svg" id="2_8j1lk"]
+[ext_resource type="Shader" path="res://addons/plugins/Components/FlashingSprite2D/flash.gdshader" id="2_lk20i"]
 [ext_resource type="Script" path="res://scripts/CrawlerVisuals.gd" id="3_o6jy4"]
+[ext_resource type="Script" path="res://addons/plugins/Components/Hittable/Hittable.gd" id="4_mq2tn"]
+[ext_resource type="Script" path="res://addons/plugins/Components/Health/Health.gd" id="5_gukof"]
+[ext_resource type="Script" path="res://addons/plugins/Components/HitOnContact2D/HitOnContact2D.gd" id="7_elowh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud2si"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2go3f"]
+shader = ExtResource("2_lk20i")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0
 
 [node name="Crawler" type="CharacterBody2D"]
 position = Vector2(-181, -26)
@@ -13,8 +22,9 @@ script = ExtResource("1_8qld5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ud2si")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.157, 0.157)
+[node name="FlashingSprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2go3f")
+scale = Vector2(0.155, 0.155)
 texture = ExtResource("2_8j1lk")
 script = ExtResource("3_o6jy4")
 
@@ -29,3 +39,16 @@ target_position = Vector2(0, 52)
 [node name="RayRight" type="RayCast2D" parent="."]
 position = Vector2(9, 0)
 target_position = Vector2(15, 0)
+
+[node name="Hittable" type="Node" parent="."]
+script = ExtResource("4_mq2tn")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_gukof")
+maxHp = 20
+
+[node name="HitOnContact2D" type="Node2D" parent="."]
+script = ExtResource("7_elowh")
+
+[connection signal="get_hit" from="Hittable" to="Health" method="damage"]
+[connection signal="damage_taken" from="Health" to="FlashingSprite2D" method="flash"]

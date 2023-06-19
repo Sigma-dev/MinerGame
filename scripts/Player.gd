@@ -38,9 +38,7 @@ func endMining():
 		var hit = mining_cast.get_collider(i)
 		for child in hit.get_children():
 			if child is Hittable:
-				child.hit(10, mining_cast.get_collision_point(i))
-		#if (hit.has_method("get_hit")):
-		#	hit.get_hit(10, mining_cast.get_collision_point(i))
+				child.try_hit(10, mining_cast.get_collision_point(i))
 	state = "default"
 
 func handle_movement():

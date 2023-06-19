@@ -1,4 +1,4 @@
-extends Sprite2D
+extends FlashingSprite2D
 
 var target = 0
 var local = 0.0

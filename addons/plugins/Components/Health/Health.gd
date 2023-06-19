@@ -19,7 +19,7 @@ func damage(dmg, a = 0):
 	health_changed.emit(_hp, -dmg)
 	_hp -= dmg
 	damage_taken.emit(dmg, _hp)
-	if _hp < 0:
+	if _hp <= 0:
 		_on_death()
 		
 func heal(heal):

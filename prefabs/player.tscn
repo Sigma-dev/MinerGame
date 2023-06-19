@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://0x1qpnfiq3jq"]
+[gd_scene load_steps=17 format=3 uid="uid://0x1qpnfiq3jq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_pt5fu"]
 [ext_resource type="Texture2D" uid="uid://bckfotp31s5tq" path="res://ressources/miner.png" id="2_yunap"]
+[ext_resource type="Script" path="res://addons/plugins/Components/Health/Health.gd" id="3_y42ou"]
+[ext_resource type="Script" path="res://addons/plugins/Components/Hittable/Hittable.gd" id="4_v6xwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guxas"]
 size = Vector2(11, 26)
@@ -58,7 +60,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nskrn"]
 resource_name = "mine"
-length = 0.4
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,7 +68,7 @@ tracks/0/path = NodePath("UpperBody:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.164),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2i(1, 5), Vector2i(1, 6), Vector2i(1, 7)]
@@ -78,7 +80,7 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.37),
+"times": PackedFloat32Array(0.18),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -205,3 +207,12 @@ texture = ExtResource("2_yunap")
 hframes = 2
 vframes = 8
 region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_y42ou")
+
+[node name="Hittable" type="Node" parent="."]
+script = ExtResource("4_v6xwd")
+invulnerability_time = 1
+
+[connection signal="get_hit" from="Hittable" to="Health" method="damage"]

@@ -1,4 +1,5 @@
 @tool
+class_name FlashingSprite2D
 extends Sprite2D
 @export var decay_rate = 0.05
 var flash_remaining = 0
