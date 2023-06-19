@@ -15,7 +15,7 @@ func _ready():
 	_hp = maxHp
 	pass # Replace with function body.
 
-func damage(dmg):
+func damage(dmg, a = 0):
 	health_changed.emit(_hp, -dmg)
 	_hp -= dmg
 	damage_taken.emit(dmg, _hp)

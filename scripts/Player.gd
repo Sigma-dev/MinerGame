@@ -36,9 +36,11 @@ func endMining():
 	mining_cast.force_shapecast_update()
 	for i in mining_cast.get_collision_count():
 		var hit = mining_cast.get_collider(i)
-		
-		if (hit.has_method("get_hit")):
-			hit.get_hit(10, mining_cast.get_collision_point(i))
+		for child in hit.get_children():
+			if child is Hittable:
+				child.hit(10, mining_cast.get_collision_point(i))
+		#if (hit.has_method("get_hit")):
+		#	hit.get_hit(10, mining_cast.get_collision_point(i))
 	state = "default"
 
 func handle_movement():
@@ -54,6 +56,7 @@ func handle_movement():
 
 func handle_physics(delta):
 	if not is_on_floor():
+		state = "default"
 		velocity.y += gravity * delta
 	if !Input.get_axis("run_left", "run_right") || state != "default":
 		velocity.x = move_toward(velocity.x, 0, SPEED)
