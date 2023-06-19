@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://htii438dm4ib"]
+
+[node name="Camera2D" type="Camera2D"]
+top_level = true
+enabled = false
+zoom = Vector2(2, 2)
+editor_draw_limits = true

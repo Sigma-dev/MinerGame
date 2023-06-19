@@ -12,10 +12,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpxn"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3e20f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqix1"]
 shader = ExtResource("5_2gkuv")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_amount = 0
+shader_parameter/flash_amount = 0.0
 
 [node name="Rock" type="StaticBody2D"]
 
@@ -29,7 +29,7 @@ maxHp = 20
 
 [node name="FlashingSprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_3e20f")
+material = SubResource("ShaderMaterial_rqix1")
 position = Vector2(0, -8)
 texture = ExtResource("6_oqwlm")
 script = ExtResource("7_ci0cx")

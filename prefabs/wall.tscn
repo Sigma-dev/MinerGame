@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgfcanpqa2ch0"]
+
+[ext_resource type="Shader" path="res://scripts/wall.gdshader" id="1_4d7xw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3v2x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f30mm"]
+shader = ExtResource("1_4d7xw")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_arrtv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jhwyp"]
+noise = SubResource("FastNoiseLite_arrtv")
+
+[node name="WallContainer" type="Node2D"]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+rotation = -1.5708
+scale = Vector2(2.373, 3.305)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(4.37114e-07, -10)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_g3v2x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+material = SubResource("ShaderMaterial_f30mm")
+position = Vector2(-4.37114e-07, 10)
+rotation = 1.5708
+scale = Vector2(0.04, 0.04)
+texture = SubResource("NoiseTexture2D_jhwyp")
