@@ -1,7 +1,6 @@
 @tool
 extends Sprite2D
 @export var decay_rate = 0.05
-signal flash_signal
 var flash_remaining = 0
 
 # Called when the node enters the scene tree for the first time.

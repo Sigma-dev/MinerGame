@@ -8,6 +8,7 @@ func _enter_tree():
 	add_custom_type("Health", "Node", preload("Health/Health.gd"), preload("Health/HealthIcon.png"))
 	add_custom_type("FlashingSprite2D", "Sprite2D", preload("FlashingSprite2D/FlashingSprite2D.gd"), preload("FlashingSprite2D/FlashingSprite2DIcon.png"))
 	add_custom_type("OnceParticles2D", "CPUParticles2D", preload("OnceParticles2D/OnceParticles2D.gd"), preload("OnceParticles2D/OnceParticles2DIcon.png"))
+	add_custom_type("Spawner2D", "Node2D", preload("Spawner2D/Spawner2D.gd"), preload("Spawner2D/Spawner2DIcon.png"))
 
 func _exit_tree():
 	# Clean-up of the plugin goes here.
@@ -15,3 +16,4 @@ func _exit_tree():
 	remove_custom_type("Health")
 	remove_custom_type("FlashingSprite2D")
 	remove_custom_type("OnceParticles2D")
+	remove_custom_type("Spawner2D")
