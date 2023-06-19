@@ -49,6 +49,7 @@ maxHp = 20
 
 [node name="HitOnContact2D" type="Node2D" parent="."]
 script = ExtResource("7_elowh")
+only_affect_player = true
 
 [connection signal="get_hit" from="Hittable" to="Health" method="damage"]
 [connection signal="damage_taken" from="Health" to="FlashingSprite2D" method="flash"]
