@@ -21,6 +21,10 @@ window/size/viewport_width=1024
 window/size/viewport_height=576
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/plugins/Components/plugin.cfg")
+
 [input]
 
 run_right={

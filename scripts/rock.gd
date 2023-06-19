@@ -2,43 +2,23 @@ extends Node2D
 
 @export var sparks: PackedScene
 @export var drop: PackedScene
-@onready var sprite: Sprite2D = $Sprite2D
-var hp = 30
-var particles_to_destroy = []
-var flash_amount = 0
-# Called when the node enters the scene tree for the first time.
+@onready var flashing_sprite = $FlashingSprite2D
+@onready var health = $Health
+
 func _ready():
-	pass # Replace with function body.
+	health.die.connect(die)
 
 func get_hit(damage, point = null):
+	health.damage(damage)
 	hit_visuals(damage, point)
-	hp -= damage
-	if hp <= 0:
-		var d = drop.instantiate()
-		d.global_position = global_position
-		get_tree().root.get_child(0).add_child(d);
-		queue_free()
-	flash_amount = 1
 	
+func die():
+	var d = drop.instantiate()
+	d.global_position = global_position
+	get_parent().add_child(d);
+
 func hit_visuals(damage, point):
 	var particles = sparks.instantiate()
-	particles.global_position = Vector2.ZERO
-	add_child(particles);
-	if (point != null):
-		particles.global_position = point
-	particles.emitting = true
-	particles_to_destroy += [particles]
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	for p in particles_to_destroy:
-		if p.emitting == false:
-			p.queue_free()
-			particles_to_destroy.erase(p)
-	sprite.material.set_shader_parameter("flash_amount", flash_amount)
-	if flash_amount > 0:
-		flash_amount -= 0.05
-	if flash_amount < 0:
-		flash_amount = 0
-	pass
+	get_parent().add_child(particles);
+	particles.global_position = point if point else Vector2.ZERO
+	#flashing_sprite.flash()

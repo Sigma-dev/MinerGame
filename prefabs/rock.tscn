@@ -1,32 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwstnlgim6mqc"]
+[gd_scene load_steps=10 format=3 uid="uid://bwstnlgim6mqc"]
 
 [ext_resource type="Script" path="res://scripts/rock.gd" id="1_47xsf"]
-[ext_resource type="Texture2D" uid="uid://bj0oirut6kdcf" path="res://ressources/rock.png" id="1_xl4rk"]
 [ext_resource type="PackedScene" uid="uid://nkccxmrx0g6y" path="res://prefabs/sparks.tscn" id="2_23hec"]
 [ext_resource type="PackedScene" uid="uid://6qqd5uk3hy64" path="res://prefabs/drop.tscn" id="3_816ql"]
-[ext_resource type="Shader" path="res://scripts/flash.gdshader" id="4_5yiib"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho6g4"]
-resource_local_to_scene = true
-shader = ExtResource("4_5yiib")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_amount = 0.0
+[ext_resource type="Shader" path="res://addons/plugins/Components/FlashingSprite2D/flash.gdshader" id="5_2gkuv"]
+[ext_resource type="Script" path="res://addons/plugins/Components/Health/Health.gd" id="6_bawgg"]
+[ext_resource type="Texture2D" uid="uid://bj0oirut6kdcf" path="res://ressources/rock.png" id="6_oqwlm"]
+[ext_resource type="Script" path="res://addons/plugins/Components/FlashingSprite2D/FlashingSprite2D.gd" id="7_ci0cx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpxn"]
 size = Vector2(16, 16)
 
-[node name="Rock" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb5km"]
+shader = ExtResource("5_2gkuv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0
 
-[node name="Rock" type="StaticBody2D" parent="."]
-position = Vector2(0, -8)
+[node name="Rock" type="StaticBody2D"]
 script = ExtResource("1_47xsf")
 sparks = ExtResource("2_23hec")
 drop = ExtResource("3_816ql")
 
-[node name="Sprite2D" type="Sprite2D" parent="Rock"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ho6g4")
-texture = ExtResource("1_xl4rk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_ghpxn")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("6_bawgg")
+maxHp = 20
+
+[node name="FlashingSprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_wb5km")
+position = Vector2(0, -8)
+texture = ExtResource("6_oqwlm")
+script = ExtResource("7_ci0cx")
+
+[connection signal="damage_taken" from="Health" to="FlashingSprite2D" method="flash"]

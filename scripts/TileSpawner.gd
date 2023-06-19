@@ -27,7 +27,8 @@ func get_random_available_ground_tile():
 	candidates.shuffle()
 	for tile in candidates:
 		var ontop_pos = Vector2i(tile.x, tile.y - 1)
-		if (tilemap.get_cell_tile_data(0, ontop_pos) != null):
+		var ontop_tile = tilemap.get_cell_tile_data(0, ontop_pos)
+		if (ontop_tile != null && ontop_tile.get_collision_polygons_count(0) > 0):
 			continue
 		shapecast.global_position = to_global(tilemap.map_to_local(ontop_pos))
 		shapecast.force_shapecast_update()
