@@ -1,7 +1,9 @@
-[gd_scene format=3 uid="uid://htii438dm4ib"]
+[gd_scene load_steps=2 format=3 uid="uid://htii438dm4ib"]
+
+[ext_resource type="Script" path="res://prefabs/CameraFollow.gd" id="1_t2ouv"]
 
 [node name="Camera2D" type="Camera2D"]
 top_level = true
-enabled = false
 zoom = Vector2(2, 2)
 editor_draw_limits = true
+script = ExtResource("1_t2ouv")

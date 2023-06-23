@@ -31,14 +31,17 @@ script = ExtResource("3_o6jy4")
 [node name="RayBot" type="RayCast2D" parent="."]
 position = Vector2(-10, 9)
 target_position = Vector2(0, 5)
+collision_mask = 2
 
 [node name="RayMid" type="RayCast2D" parent="."]
 position = Vector2(10, 6)
 target_position = Vector2(0, 52)
+collision_mask = 2
 
 [node name="RayRight" type="RayCast2D" parent="."]
 position = Vector2(9, 0)
 target_position = Vector2(15, 0)
+collision_mask = 2
 
 [node name="Hittable" type="Node" parent="."]
 script = ExtResource("4_mq2tn")

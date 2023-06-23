@@ -12,12 +12,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpxn"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqix1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8by3"]
 shader = ExtResource("5_2gkuv")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_amount = 0.0
+shader_parameter/flash_amount = 0
 
 [node name="Rock" type="StaticBody2D"]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -29,9 +30,10 @@ maxHp = 20
 
 [node name="FlashingSprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_rqix1")
+material = SubResource("ShaderMaterial_v8by3")
 position = Vector2(0, -8)
 texture = ExtResource("6_oqwlm")
+hframes = 2
 script = ExtResource("7_ci0cx")
 
 [node name="Hittable" type="Node" parent="."]
