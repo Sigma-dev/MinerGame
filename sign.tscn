@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://ou6hj6jvnwwp"]
+
+[ext_resource type="Texture2D" uid="uid://ccc80h4anemdy" path="res://ressources/Sign.png" id="1_7ma2a"]
+[ext_resource type="Script" path="res://scenes/zones/Sign.gd" id="2_mgtbs"]
+[ext_resource type="Texture2D" uid="uid://cxa3hpxhvfx6j" path="res://ressources/KeyboardKey.png" id="3_h70re"]
+
+[sub_resource type="SystemFont" id="SystemFont_psmwm"]
+font_names = PackedStringArray("3 by 5")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_32f40"]
+font = SubResource("SystemFont_psmwm")
+font_size = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k43nx"]
+size = Vector2(20, 18)
+
+[node name="Sign" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(-212, 120)
+texture = ExtResource("1_7ma2a")
+script = ExtResource("2_mgtbs")
+zone_coords = Vector2i(-1, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -11.0
+offset_top = -14.0
+offset_right = 2.0
+offset_bottom = 12.0
+text = "40"
+label_settings = SubResource("LabelSettings_32f40")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_k43nx")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-1.5874, 2.08347)
+
+[node name="KeyboardKey" type="Sprite2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(1.5, -16.5)
+texture = ExtResource("3_h70re")
+
+[node name="Label2" type="Label" parent="Node2D"]
+offset_top = -20.0
+offset_right = 4.0
+offset_bottom = -10.0
+text = "E"
+label_settings = SubResource("LabelSettings_32f40")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

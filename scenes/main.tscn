@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvuy3u04jp5ty"]
+[gd_scene load_steps=8 format=3 uid="uid://cvuy3u04jp5ty"]
 
 [ext_resource type="Script" path="res://scenes/word_manager.gd" id="1_dyvod"]
+[ext_resource type="PackedScene" uid="uid://cne5jpp3qwjjq" path="res://scenes/zones/zone1.tscn" id="2_1as00"]
+[ext_resource type="PackedScene" uid="uid://0x1qpnfiq3jq" path="res://prefabs/player.tscn" id="2_3jwbe"]
+[ext_resource type="PackedScene" uid="uid://htii438dm4ib" path="res://prefabs/Camera.tscn" id="3_l8pgd"]
+[ext_resource type="Script" path="res://scenes/zone_spawner.gd" id="5_n87dd"]
 
 [sub_resource type="Gradient" id="Gradient_1onw7"]
 colors = PackedColorArray(0.330783, 0.47663, 0.842613, 1, 6.54578e-06, 0.879934, 0.881051, 1)
@@ -18,3 +22,17 @@ position = Vector2(150, 0)
 rotation = 1.5708
 scale = Vector2(1.5, 2806.89)
 texture = SubResource("GradientTexture1D_csqyl")
+
+[node name="Player" parent="." instance=ExtResource("2_3jwbe")]
+
+[node name="Camera2D" parent="." instance=ExtResource("3_l8pgd")]
+
+[node name="zone_spawner" type="Node2D" parent="."]
+script = ExtResource("5_n87dd")
+start_spawned = true
+zone = ExtResource("2_1as00")
+
+[node name="zone_spawner2" type="Node2D" parent="."]
+position = Vector2(-512, 0)
+script = ExtResource("5_n87dd")
+zone = ExtResource("2_1as00")
