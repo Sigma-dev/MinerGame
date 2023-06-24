@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 class Zone:
@@ -11,8 +12,9 @@ class Zone:
 
 var player = null
 var zones : Array[Zone] = []
-	
+
 func deploy_zone_at(coords: Vector2i):
+	print(coords)
 	for zone in zones:
 		if zone.spawned == false && zone.coords == coords:
 			zone.spawn.deploy()

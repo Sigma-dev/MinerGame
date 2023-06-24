@@ -148,6 +148,8 @@ shape = SubResource("RectangleShape2D_moq5c")
 target_position = Vector2(0, 0)
 
 [node name="Sign" parent="." instance=ExtResource("4_ql35u")]
+position = Vector2(-201.6, 119.937)
+zone_coords = Vector2i(-1, 0)
 
 [node name="Crawler" parent="." instance=ExtResource("5_qj4xx")]
 position = Vector2(-198, -26)
