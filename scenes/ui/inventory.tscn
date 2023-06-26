@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv5k5c6yxmrrf"]
 
-[ext_resource type="Script" path="res://scenes/ui/Inventory.gd" id="1_vu0bp"]
+[ext_resource type="Script" path="res://scripts/inventory/Inventory.gd" id="1_nuy7x"]
 
 [node name="Inventory" type="PanelContainer"]
-script = ExtResource("1_vu0bp")
+script = ExtResource("1_nuy7x")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

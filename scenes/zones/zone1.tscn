@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dhb2553kn5nms" path="res://assets/Rocky Roads/Tilesets/tileset_forest.png" id="1_8sq5u"]
 [ext_resource type="Script" path="res://scripts/world/TileSpawner.gd" id="3_rneug"]
 [ext_resource type="PackedScene" uid="uid://bwstnlgim6mqc" path="res://scenes/prefabs/rock.tscn" id="4_8b5nf"]
-[ext_resource type="PackedScene" uid="uid://ou6hj6jvnwwp" path="res://scenes/sign.tscn" id="4_ql35u"]
+[ext_resource type="PackedScene" uid="uid://ou6hj6jvnwwp" path="res://scenes/prefabs/sign.tscn" id="4_ql35u"]
 [ext_resource type="PackedScene" uid="uid://vmwvf5p6g1ea" path="res://scenes/prefabs/crawler.tscn" id="5_qj4xx"]
 [ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="6_ea3ep"]
 
