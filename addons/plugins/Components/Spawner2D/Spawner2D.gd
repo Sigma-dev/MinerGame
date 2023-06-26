@@ -1,5 +1,6 @@
 @tool
 extends Node2D
+class_name Spawner2D
 @export var to_spawn: PackedScene
 @export var spawn_as_child: bool
 # Called when the node enters the scene tree for the first time.

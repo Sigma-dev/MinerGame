@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dopbnraoqe21h"
-path="res://.godot/imported/Spawner2DIcon.png-08d9629b234f6fecc8b6cd831136e1a7.ctex"
+uid="uid://xnvo02ad0y25"
+path="res://.godot/imported/ResourceSpawner2DIcon.png-2b86ec290e8fc36559312198dbf3de80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/plugins/Components/Spawner2D/Spawner2DIcon.png"
-dest_files=["res://.godot/imported/Spawner2DIcon.png-08d9629b234f6fecc8b6cd831136e1a7.ctex"]
+source_file="res://addons/plugins/Components/ResourceSpawner2D/ResourceSpawner2DIcon.png"
+dest_files=["res://.godot/imported/ResourceSpawner2DIcon.png-2b86ec290e8fc36559312198dbf3de80.ctex"]
 
 [params]
 

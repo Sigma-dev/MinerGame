@@ -42,6 +42,8 @@ zone = ExtResource("2_1as00")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Inventory" parent="UI" instance=ExtResource("6_sr3i0")]
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 26.0
 inventory_data = ExtResource("7_5qdah")

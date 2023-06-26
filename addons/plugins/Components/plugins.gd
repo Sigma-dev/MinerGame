@@ -9,6 +9,7 @@ func _enter_tree():
 	add_custom_type("FlashingSprite2D", "Sprite2D", preload("FlashingSprite2D/FlashingSprite2D.gd"), preload("FlashingSprite2D/FlashingSprite2DIcon.png"))
 	add_custom_type("OnceParticles2D", "CPUParticles2D", preload("OnceParticles2D/OnceParticles2D.gd"), preload("OnceParticles2D/OnceParticles2DIcon.png"))
 	add_custom_type("Spawner2D", "Node2D", preload("Spawner2D/Spawner2D.gd"), preload("Spawner2D/Spawner2DIcon.png"))
+	add_custom_type("ResourceSpawner2D", "Node2D", preload("ResourceSpawner2D/ResourceSpawner2D.gd"), preload("ResourceSpawner2D/ResourceSpawner2DIcon.png"))
 	add_custom_type("Hittable", "Node", preload("Hittable/Hittable.gd"), preload("Hittable/HittableIcon.png"))
 	add_custom_type("HitOnContact2D", "Node2D", preload("HitOnContact2D/HitOnContact2D.gd"), preload("HitOnContact2D/HitOnContact2DIcon.png"))
 
@@ -19,5 +20,6 @@ func _exit_tree():
 	remove_custom_type("FlashingSprite2D")
 	remove_custom_type("OnceParticles2D")
 	remove_custom_type("Spawner2D")
+	remove_custom_type("ResourceSpawner2D")
 	remove_custom_type("Hittable")
 	remove_custom_type("HitOnContact2D")

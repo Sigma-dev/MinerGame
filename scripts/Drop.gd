@@ -2,13 +2,17 @@ extends RigidBody2D
 @onready var anim : AnimationPlayer = $AnimationPlayer 
 @onready var area : Area2D = $Area2D
 @onready var shape: CollisionShape2D = $CollisionShape2D
-@export var item: ItemData
+var item: ItemData = null
 var target : Node2D = null
 var chase_time = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim.play("default")
 	pass # Replace with function body.
+	
+func set_resource(resource):
+	item = resource
+	print(item)
 
 func chase(delta):
 	gravity_scale = 0
