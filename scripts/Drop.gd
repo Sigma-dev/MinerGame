@@ -2,6 +2,7 @@ extends RigidBody2D
 @onready var anim : AnimationPlayer = $AnimationPlayer 
 @onready var area : Area2D = $Area2D
 @onready var shape: CollisionShape2D = $CollisionShape2D
+@export var item: ItemData
 var target : Node2D = null
 var chase_time = 0
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +21,7 @@ func chase(delta):
 	if dist < 40:
 		scale = Vector2(dist / 40.0, dist / 40.0)
 	if dist < 10:
+		target.pickup_item(item)
 		queue_free()
 	#linear_velocity *=  0.99
 # Called every frame. 'delta' is the elapsed time since the previous frame.

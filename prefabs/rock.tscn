@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bwstnlgim6mqc"]
 
 [ext_resource type="PackedScene" uid="uid://nkccxmrx0g6y" path="res://prefabs/sparks.tscn" id="2_23hec"]
-[ext_resource type="PackedScene" uid="uid://6qqd5uk3hy64" path="res://prefabs/drop.tscn" id="3_816ql"]
+[ext_resource type="PackedScene" uid="uid://bjfaaps6ijm8y" path="res://prefabs/drop.tscn" id="3_816ql"]
+[ext_resource type="Texture2D" uid="uid://bj0oirut6kdcf" path="res://resources/rock.png" id="3_wr1ex"]
 [ext_resource type="Shader" path="res://addons/plugins/Components/FlashingSprite2D/flash.gdshader" id="5_2gkuv"]
 [ext_resource type="Script" path="res://addons/plugins/Components/Health/Health.gd" id="6_bawgg"]
-[ext_resource type="Texture2D" uid="uid://bj0oirut6kdcf" path="res://ressources/rock.png" id="6_oqwlm"]
 [ext_resource type="Script" path="res://addons/plugins/Components/FlashingSprite2D/FlashingSprite2D.gd" id="7_ci0cx"]
 [ext_resource type="Script" path="res://addons/plugins/Components/Hittable/Hittable.gd" id="7_dyi5k"]
 [ext_resource type="Script" path="res://addons/plugins/Components/Spawner2D/Spawner2D.gd" id="8_30kcg"]
@@ -12,10 +12,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpxn"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5uta8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gl0q5"]
 shader = ExtResource("5_2gkuv")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_amount = 0.0
+shader_parameter/flash_amount = 0
 
 [node name="Rock" type="StaticBody2D"]
 collision_layer = 3
@@ -30,9 +30,9 @@ maxHp = 20
 
 [node name="FlashingSprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_5uta8")
+material = SubResource("ShaderMaterial_gl0q5")
 position = Vector2(0, -8)
-texture = ExtResource("6_oqwlm")
+texture = ExtResource("3_wr1ex")
 hframes = 2
 script = ExtResource("7_ci0cx")
 

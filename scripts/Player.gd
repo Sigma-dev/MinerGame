@@ -11,6 +11,7 @@ var facing_right = true
 var state = "default"
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var inventory: InventoryData = preload("res://scripts/inventory/resources/player_inventory.tres")
 
 func updateAnimation():
 	if facing_right:
@@ -58,6 +59,9 @@ func handle_physics(delta):
 		velocity.y += gravity * delta
 	if !Input.get_axis("run_left", "run_right") || state != "default":
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+func pickup_item(item_data):
+	inventory.add_item(item_data)
 
 func _physics_process(delta):
 	handle_physics(delta)

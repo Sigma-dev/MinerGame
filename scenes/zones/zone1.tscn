@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://cne5jpp3qwjjq"]
 
-[ext_resource type="Texture2D" uid="uid://dhb2553kn5nms" path="res://ressources/Rocky Roads/Tilesets/tileset_forest.png" id="2_kpwkh"]
+[ext_resource type="Texture2D" uid="uid://dhb2553kn5nms" path="res://resources/Rocky Roads/Tilesets/tileset_forest.png" id="1_8sq5u"]
 [ext_resource type="Script" path="res://scripts/TileSpawner.gd" id="3_rneug"]
 [ext_resource type="PackedScene" uid="uid://bwstnlgim6mqc" path="res://prefabs/rock.tscn" id="4_8b5nf"]
 [ext_resource type="PackedScene" uid="uid://ou6hj6jvnwwp" path="res://sign.tscn" id="4_ql35u"]
 [ext_resource type="PackedScene" uid="uid://vmwvf5p6g1ea" path="res://prefabs/crawler.tscn" id="5_qj4xx"]
-[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://ressources/furnace.png" id="6_x83kn"]
+[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://resources/furnace.png" id="6_ea3ep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wfgsy"]
-texture = ExtResource("2_kpwkh")
+texture = ExtResource("1_8sq5u")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
@@ -157,7 +157,7 @@ position = Vector2(-198, -26)
 [node name="Furnace" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-116.502, 111.891)
-texture = ExtResource("6_x83kn")
+texture = ExtResource("6_ea3ep")
 hframes = 2
 vframes = 5
 
@@ -165,7 +165,7 @@ vframes = 5
 top_level = true
 texture_filter = 1
 position = Vector2(-116.502, 111.891)
-texture = ExtResource("6_x83kn")
+texture = ExtResource("6_ea3ep")
 hframes = 2
 vframes = 5
 frame = 1

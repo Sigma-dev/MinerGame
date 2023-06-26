@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://0x1qpnfiq3jq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_pt5fu"]
-[ext_resource type="Texture2D" uid="uid://bckfotp31s5tq" path="res://ressources/miner.png" id="2_yunap"]
+[ext_resource type="Texture2D" uid="uid://bckfotp31s5tq" path="res://resources/miner.png" id="2_akrit"]
 [ext_resource type="Script" path="res://addons/plugins/Components/Health/Health.gd" id="3_y42ou"]
 [ext_resource type="Script" path="res://addons/plugins/Components/Hittable/Hittable.gd" id="4_v6xwd"]
 
@@ -196,7 +196,7 @@ libraries = {
 [node name="UpperBody" type="Sprite2D" parent="Visuals"]
 z_index = 1
 texture_filter = 1
-texture = ExtResource("2_yunap")
+texture = ExtResource("2_akrit")
 hframes = 2
 vframes = 8
 frame = 9
@@ -204,7 +204,7 @@ region_rect = Rect2(0, 0, 32, 32)
 
 [node name="LowerBody" type="Sprite2D" parent="Visuals"]
 texture_filter = 1
-texture = ExtResource("2_yunap")
+texture = ExtResource("2_akrit")
 hframes = 2
 vframes = 8
 region_rect = Rect2(0, 0, 32, 32)

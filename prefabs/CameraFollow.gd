@@ -10,7 +10,6 @@ func get_target_pos():
 	var zone_width = 512
 	var zone_height = 276
 	var relative_to_zone = Vector2(fmod(player.global_position.x, zone_width), fmod(player.global_position.y, zone_height))
-	print(relative_to_zone)
 	if abs(relative_to_zone.y) > zone_height / 3:
 		return player.global_position
 	if abs(relative_to_zone.x) > zone_width / 3:

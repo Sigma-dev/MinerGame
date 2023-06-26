@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv5k5c6yxmrrf"]
+
+[ext_resource type="Script" path="res://scenes/ui/Inventory.gd" id="1_vu0bp"]
+
+[node name="Inventory" type="PanelContainer"]
+script = ExtResource("1_vu0bp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Slots" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 6

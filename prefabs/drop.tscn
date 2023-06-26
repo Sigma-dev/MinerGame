@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://6qqd5uk3hy64"]
+[gd_scene load_steps=13 format=3 uid="uid://bjfaaps6ijm8y"]
 
 [ext_resource type="Script" path="res://scripts/Drop.gd" id="1_bc10v"]
-[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://ressources/Rocky Roads/small_rocks.png" id="2_18034"]
+[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://resources/small_rocks.png" id="2_jyjqm"]
+[ext_resource type="Resource" uid="uid://xvxjp851ic2o" path="res://scripts/inventory/resources/rock.tres" id="2_s0t0s"]
 [ext_resource type="Shader" path="res://scripts/circle.gdshader" id="3_gxkh5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_apgiu"]
@@ -108,13 +109,14 @@ radius = 40.0
 top_level = true
 lock_rotation = true
 script = ExtResource("1_bc10v")
+item = ExtResource("2_s0t0s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_apgiu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_18034")
+texture = ExtResource("2_jyjqm")
 
 [node name="Aura" type="Sprite2D" parent="Sprite2D"]
 show_behind_parent = true

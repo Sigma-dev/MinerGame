@@ -14,7 +14,6 @@ func _process(delta):
 func try_hit(damage, point = null):
 	if (last_hit + invulnerability_time >= elapsed):
 		return
-	print(damage)
 	get_hit.emit(damage, point)
 	get_hit_point.emit(point)
 	last_hit = elapsed

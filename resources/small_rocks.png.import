@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cms1nvkyr43o"
-path="res://.godot/imported/small_rocks.png-4a7455742a733dbf84ef7f1ec7bdfccc.ctex"
+path="res://.godot/imported/small_rocks.png-95f667324b3f09f31d7f1c33918a394e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Rocky Roads/small_rocks.png"
-dest_files=["res://.godot/imported/small_rocks.png-4a7455742a733dbf84ef7f1ec7bdfccc.ctex"]
+source_file="res://resources/small_rocks.png"
+dest_files=["res://.godot/imported/small_rocks.png-95f667324b3f09f31d7f1c33918a394e.ctex"]
 
 [params]
 
