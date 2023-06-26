@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjfaaps6ijm8y"]
+
+[ext_resource type="Script" path="res://scripts/entities/Drop.gd" id="1_vrewi"]
+[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="2_f1nkd"]
+[ext_resource type="Shader" path="res://scripts/shaders/circle.gdshader" id="3_xoyfs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_apgiu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1uuwj"]
+shader = ExtResource("3_xoyfs")
+
+[sub_resource type="Gradient" id="Gradient_q75t1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wyiah"]
+gradient = SubResource("Gradient_q75t1")
+
+[sub_resource type="Animation" id="Animation_g558i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vtm68"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.5, -2, 0.5),
+"update": 0,
+"values": [0.0, 0.349066, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2.5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ajj2j"]
+_data = {
+"RESET": SubResource("Animation_g558i"),
+"default": SubResource("Animation_vtm68")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_flv57"]
+radius = 40.0
+
+[node name="Drop" type="RigidBody2D"]
+top_level = true
+lock_rotation = true
+script = ExtResource("1_vrewi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_apgiu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_f1nkd")
+
+[node name="Aura" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_1uuwj")
+position = Vector2(5.6407e-10, 4.37465e-07)
+rotation = -0.00177786
+scale = Vector2(0.917431, 0.917431)
+texture = SubResource("GradientTexture2D_wyiah")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ajj2j")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_flv57")

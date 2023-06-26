@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://vmwvf5p6g1ea"]
+
+[ext_resource type="Script" path="res://scripts/entities/Crawler/Crawler.gd" id="1_uksld"]
+[ext_resource type="Shader" path="res://addons/plugins/Components/FlashingSprite2D/flash.gdshader" id="2_lk20i"]
+[ext_resource type="Texture2D" uid="uid://ca268da2oj7ps" path="res://assets/icon.svg" id="3_gmpbi"]
+[ext_resource type="Script" path="res://scripts/entities/Crawler/CrawlerVisuals.gd" id="4_7u116"]
+[ext_resource type="Script" path="res://addons/plugins/Components/Hittable/Hittable.gd" id="4_mq2tn"]
+[ext_resource type="Script" path="res://addons/plugins/Components/Health/Health.gd" id="5_gukof"]
+[ext_resource type="Script" path="res://addons/plugins/Components/HitOnContact2D/HitOnContact2D.gd" id="7_elowh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud2si"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2go3f"]
+shader = ExtResource("2_lk20i")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0
+
+[node name="Crawler" type="CharacterBody2D"]
+position = Vector2(-181, -26)
+script = ExtResource("1_uksld")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ud2si")
+
+[node name="FlashingSprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2go3f")
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("3_gmpbi")
+script = ExtResource("4_7u116")
+
+[node name="RayBot" type="RayCast2D" parent="."]
+position = Vector2(-10, 9)
+target_position = Vector2(0, 5)
+collision_mask = 2
+
+[node name="RayMid" type="RayCast2D" parent="."]
+position = Vector2(10, 6)
+target_position = Vector2(0, 52)
+collision_mask = 2
+
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2(9, 0)
+target_position = Vector2(15, 0)
+collision_mask = 2
+
+[node name="Hittable" type="Node" parent="."]
+script = ExtResource("4_mq2tn")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_gukof")
+maxHp = 20
+
+[node name="HitOnContact2D" type="Node2D" parent="."]
+script = ExtResource("7_elowh")
+only_affect_player = true
+
+[connection signal="get_hit" from="Hittable" to="Health" method="damage"]
+[connection signal="damage_taken" from="Health" to="FlashingSprite2D" method="flash"]
