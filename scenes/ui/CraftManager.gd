@@ -9,9 +9,11 @@ func _ready():
 		var instance = craft_scene.instantiate()
 		add_child(instance)
 		instance.set_data(recipe)
-
+		instance.on_craft_select.connect(on_craft_select)
 	pass # Replace with function body.
 
+func on_craft_select(craft_data: CraftData):
+	craft_info.set_craft_info(craft_data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

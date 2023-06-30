@@ -4,13 +4,17 @@ extends PanelContainer
 @onready var item_texture = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ItemTexture
 @onready var item_description = $MarginContainer/VBoxContainer/HBoxContainer/ItemDescription
 @onready var item_name = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ItemName
-@onready var craft_button = $MarginContainer/VBoxContainer/CraftButton
+@onready var craft_button : Button = $MarginContainer/VBoxContainer/CraftButton
 var player_inventory = preload("res://resources/default/player_inventory.tres")
 var ingredient_scene = preload("res://craft_info_ingredient.tscn")
 var craft_data: CraftData = null
 
 func _ready():
+	craft_button.button_down.connect(_craft)
 	player_inventory.on_update.connect(update)
+	
+func _craft():
+	craft_data.craft(player_inventory)
 
 func update(): 
 	for child in ingredients.get_children():

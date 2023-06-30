@@ -26,3 +26,15 @@ func get_amount_item(item_data: ItemData) -> int:
 		if(slot && slot.item_data == item_data):
 			amount += slot.quantity
 	return amount
+	
+func remove_item_quantity(item_data, quantity):
+	var to_remove = quantity
+	for slot in slots:
+		if(slot && slot.item_data == item_data):
+			if slot.quantity > to_remove:
+				slot.quantity -= to_remove
+				return
+			else:
+				to_remove -= slot.quantity
+				slots.erase(slot)
+
