@@ -152,7 +152,7 @@ position = Vector2(-201.6, 119.937)
 zone_coords = Vector2i(-1, 0)
 
 [node name="Crawler" parent="." instance=ExtResource("5_qj4xx")]
-position = Vector2(-198, -26)
+position = Vector2(-190, -24.05)
 
 [node name="Furnace" type="Sprite2D" parent="."]
 texture_filter = 1

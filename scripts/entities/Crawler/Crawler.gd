@@ -10,7 +10,11 @@ var settled = false
 var rotating = 0
 var touched_ground_again = false
 var visual_angle = 0
+@onready var anim = $AnimationPlayer
 var edge_size = 0
+
+func _ready():
+	anim.play("run")
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	var diff =  abs(a - b)
@@ -52,7 +56,7 @@ func _physics_process(delta):
 	else:
 		rotated = false
 	handle_visuals(rotated)
-	velocity = transform.x * 20 #default 20
+	velocity = transform.x * 40 #default 20
 	move_and_slide()
 
 func get_edge_size():
