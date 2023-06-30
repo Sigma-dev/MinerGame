@@ -36,5 +36,6 @@ func remove_item_quantity(item_data, quantity):
 				return
 			else:
 				to_remove -= slot.quantity
-				slots.erase(slot)
+				slots[slots.find(slot)] = null
+	on_update.emit()
 

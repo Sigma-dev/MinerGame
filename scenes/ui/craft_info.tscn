@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djsnn6ira6jxd"]
 
 [ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="1_ha7f2"]
-[ext_resource type="Script" path="res://craft_info.gd" id="1_x3xp3"]
+[ext_resource type="Script" path="res://scripts/inventory/CraftInfo.gd" id="1_tajps"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opxun"]
 font_size = 12
@@ -12,7 +12,7 @@ font_size = 12
 [node name="CraftInfo" type="PanelContainer"]
 offset_right = 184.0
 offset_bottom = 60.0
-script = ExtResource("1_x3xp3")
+script = ExtResource("1_tajps")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

@@ -1,5 +1,5 @@
 extends VBoxContainer
-@export var recipes_data: CraftRecipesData
+@export var recipes_data: CraftingRecipesData
 var craft_scene = preload("res://scenes/ui/craft.tscn")
 @onready var craft_info = $CraftInfo
 
@@ -12,7 +12,7 @@ func _ready():
 		instance.on_craft_select.connect(on_craft_select)
 	pass # Replace with function body.
 
-func on_craft_select(craft_data: CraftData):
+func on_craft_select(craft_data: CraftingRecipeData):
 	craft_info.set_craft_info(craft_data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

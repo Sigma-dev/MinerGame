@@ -1,9 +1,9 @@
 extends Resource
-class_name CraftData
+class_name CraftingRecipeData
 
 @export var ingredients : Array[SlotData]
-@export var result : ItemData
-@export var amount = 1
+@export var product : ItemData
+@export var produced_amount = 1
 
 func can_craft(inventory: InventoryData):
 	for ingredient in ingredients:
@@ -16,4 +16,4 @@ func craft(inventory: InventoryData):
 		return null
 	for ingredient in ingredients:
 		inventory.remove_item_quantity(ingredient.item_data, ingredient.quantity)
-	return inventory.add_item(result, amount)
+	return inventory.add_item(product, produced_amount)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://ll88yuxuax1w"]
+
+[ext_resource type="Script" path="res://scripts/inventory/CraftManager.gd" id="1_haduh"]
+[ext_resource type="Resource" uid="uid://dhpyqq4r5w8p3" path="res://resources/default/default_recipes.tres" id="2_hndu4"]
+[ext_resource type="PackedScene" uid="uid://djsnn6ira6jxd" path="res://scenes/ui/craft_info.tscn" id="3_tekse"]
+
+[node name="CraftManager" type="VBoxContainer"]
+script = ExtResource("1_haduh")
+recipes_data = ExtResource("2_hndu4")
+
+[node name="CraftInfo" parent="." instance=ExtResource("3_tekse")]
+layout_mode = 2
