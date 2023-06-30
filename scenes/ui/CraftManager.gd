@@ -4,7 +4,6 @@ var craft_scene = preload("res://scenes/ui/craft.tscn")
 @onready var craft_info = $CraftInfo
 
 func _ready():
-	print(recipes_data.recipes[0].ingredients)
 	craft_info.set_craft_info(recipes_data.recipes[0])
 	for recipe in recipes_data.recipes:
 		var instance = craft_scene.instantiate()

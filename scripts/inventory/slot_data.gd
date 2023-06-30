@@ -9,3 +9,4 @@ static func create(item : ItemData, amount : int = 0):
 	var slot = SlotData.new()
 	slot.item_data = item
 	slot.quantity = amount
+	return slot
