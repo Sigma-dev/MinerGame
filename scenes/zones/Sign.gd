@@ -26,5 +26,5 @@ func _physics_process(delta):
 			anim.play("deny")
 		else:
 			get_parent().get_parent().get_parent().deploy_zone_at(zone_coords)
-		queue_free()
+			queue_free()
 	pass

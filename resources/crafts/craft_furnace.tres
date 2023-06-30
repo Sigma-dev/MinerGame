@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CraftingRecipeData" load_steps=6 format=3 uid="uid://77y7bmc5p16"]
+
+[ext_resource type="Resource" uid="uid://xvxjp851ic2o" path="res://resources/items/rock.tres" id="1_14yao"]
+[ext_resource type="Script" path="res://scripts/resources/slot_data.gd" id="2_66j2i"]
+[ext_resource type="Resource" uid="uid://b5qwtp2v56l3j" path="res://resources/items/furnace.tres" id="3_hv0ld"]
+[ext_resource type="Script" path="res://scripts/resources/crafting_recipe_data.gd" id="4_xu1ga"]
+
+[sub_resource type="Resource" id="Resource_pi1ha"]
+script = ExtResource("2_66j2i")
+quantity = 3
+item_data = ExtResource("1_14yao")
+
+[resource]
+script = ExtResource("4_xu1ga")
+ingredients = Array[ExtResource("2_66j2i")]([SubResource("Resource_pi1ha")])
+product = ExtResource("3_hv0ld")
+produced_amount = 1

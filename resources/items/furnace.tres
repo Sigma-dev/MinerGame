@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b5qwtp2v56l3j"]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1_ftxa5"]
+[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="2_lx66i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4suq"]
+atlas = ExtResource("2_lx66i")
+region = Rect2(0, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_ftxa5")
+name = "Furnace"
+hint = "Burns stuff"
+stackable = true
+texture = SubResource("AtlasTexture_i4suq")

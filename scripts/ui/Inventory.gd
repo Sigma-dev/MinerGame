@@ -1,13 +1,14 @@
 extends PanelContainer
 
-var slot_scene : PackedScene = preload("res://scenes/ui/slot.tscn")
+var slot_scene : PackedScene = preload("res://scenes/ui/inventory/inventory_slot.tscn")
 @export var inventory_data: InventoryData = null
 @onready var slots = $MarginContainer/Slots
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if inventory_data:
-		set_inventory_data(inventory_data)
+		set_inventory_data(inventory_data)	
 		_update()
 	pass # Replace with function body.
 
@@ -26,6 +27,3 @@ func _update():
 		if slot_data:
 			instance.set_data(slot_data)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
