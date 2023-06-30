@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://de5sn023xik5j"]
 
-[ext_resource type="Script" path="res://scripts/inventory/CraftInfoIngredient.gd" id="1_xhnr4"]
-[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="1_y4fnq"]
+[ext_resource type="Script" path="res://scripts/ui/CraftInfoIngredient.gd" id="1_ripc5"]
+[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="2_dx46k"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="CraftingRecipeIngredient" type="MarginContainer"]
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
-script = ExtResource("1_xhnr4")
+script = ExtResource("1_ripc5")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(50, 20)
@@ -26,5 +26,5 @@ horizontal_alignment = 1
 [node name="ItemTexture" type="TextureRect" parent="PanelContainer/CraftInfoIngredient"]
 texture_filter = 1
 layout_mode = 2
-texture = ExtResource("1_y4fnq")
+texture = ExtResource("2_dx46k")
 expand_mode = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djsnn6ira6jxd"]
 
-[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="1_ha7f2"]
-[ext_resource type="Script" path="res://scripts/inventory/CraftInfo.gd" id="1_tajps"]
+[ext_resource type="Script" path="res://scripts/ui/CraftInfo.gd" id="1_j4ipc"]
+[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="2_shtte"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opxun"]
 font_size = 12
@@ -9,10 +9,10 @@ font_size = 12
 [sub_resource type="LabelSettings" id="LabelSettings_mguv2"]
 font_size = 12
 
-[node name="CraftInfo" type="PanelContainer"]
+[node name="CraftingInfo" type="PanelContainer"]
 offset_right = 184.0
 offset_bottom = 60.0
-script = ExtResource("1_tajps")
+script = ExtResource("1_j4ipc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -52,7 +52,7 @@ theme_override_constants/separation = -9
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("1_ha7f2")
+texture = ExtResource("2_shtte")
 expand_mode = 2
 stretch_mode = 5
 

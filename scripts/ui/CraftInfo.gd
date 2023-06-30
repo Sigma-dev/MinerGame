@@ -6,7 +6,7 @@ extends PanelContainer
 @onready var item_name = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ItemName
 @onready var craft_button : Button = $MarginContainer/VBoxContainer/CraftButton
 var player_inventory = preload("res://resources/default/player_inventory.tres")
-var ingredient_scene = preload("res://scenes/ui/craft_info_ingredient.tscn")
+var ingredient_scene = preload("res://scenes/ui/crafting/crafting_info_ingredient.tscn")
 var crafting_recipe: CraftingRecipeData = null
 
 func _ready():

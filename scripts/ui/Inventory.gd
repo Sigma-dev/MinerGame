@@ -1,6 +1,6 @@
 extends PanelContainer
 
-var slot_scene : PackedScene = preload("res://scenes/ui/slot.tscn")
+var slot_scene : PackedScene = preload("res://scenes/ui/inventory/inventory_slot.tscn")
 @export var inventory_data: InventoryData = null
 @onready var slots = $MarginContainer/Slots
 
@@ -8,7 +8,7 @@ var slot_scene : PackedScene = preload("res://scenes/ui/slot.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if inventory_data:
-		set_inventory_data(inventory_data)
+		set_inventory_data(inventory_data)	
 		_update()
 	pass # Replace with function body.
 

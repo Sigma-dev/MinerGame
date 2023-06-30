@@ -1,6 +1,6 @@
 extends VBoxContainer
 @export var recipes_data: CraftingRecipesData
-var craft_scene = preload("res://scenes/ui/craft.tscn")
+var craft_scene = preload("res://scenes/ui/crafting/crafting_recipe.tscn")
 @onready var craft_info = $CraftInfo
 
 func _ready():
