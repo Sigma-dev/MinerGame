@@ -9,39 +9,35 @@
 
 [node name="Toggle" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_eui2j")
 
-[node name="RightSideMargin" type="MarginContainer" parent="Toggle"]
+[node name="RightSidePanel" type="PanelContainer" parent="Toggle"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 742.0
-offset_right = 984.0
-offset_bottom = 231.0
+offset_left = -100.0
+offset_bottom = 150.0
 grow_horizontal = 0
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 0
 
-[node name="RightSidePanel" type="PanelContainer" parent="Toggle/RightSideMargin"]
-layout_mode = 2
-
-[node name="CraftInfoMargin" type="MarginContainer" parent="Toggle/RightSideMargin/RightSidePanel"]
-custom_minimum_size = Vector2(0, 100)
+[node name="CraftInfoMargin" type="MarginContainer" parent="Toggle/RightSidePanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="CraftManager" parent="Toggle/RightSideMargin/RightSidePanel/CraftInfoMargin" instance=ExtResource("2_ga316")]
+[node name="CraftManager" parent="Toggle/RightSidePanel/CraftInfoMargin" instance=ExtResource("2_ga316")]
 layout_mode = 2
 
 [node name="Inventory" parent="Toggle" instance=ExtResource("1_7d52p")]
-layout_mode = 0
+layout_mode = 2
+offset_right = 16.0
+offset_bottom = 135.0
 inventory_data = ExtResource("3_f686v")
