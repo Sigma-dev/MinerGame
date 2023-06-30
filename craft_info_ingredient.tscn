@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://de5sn023xik5j"]
+[gd_scene load_steps=3 format=3 uid="uid://de5sn023xik5j"]
 
+[ext_resource type="Script" path="res://craft_info_ingredient.gd" id="1_lagj3"]
 [ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="1_y4fnq"]
 
 [node name="MarginContainer" type="MarginContainer"]
@@ -7,6 +8,7 @@ theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
+script = ExtResource("1_lagj3")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(50, 20)
@@ -16,12 +18,12 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="PanelContainer/CraftInfoIngredient"]
+[node name="Quantity" type="Label" parent="PanelContainer/CraftInfoIngredient"]
 layout_mode = 2
 text = "5"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CraftInfoIngredient"]
+[node name="ItemTexture" type="TextureRect" parent="PanelContainer/CraftInfoIngredient"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("1_y4fnq")

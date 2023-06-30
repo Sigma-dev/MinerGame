@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ojhdipr6cqf7"]
+[gd_scene load_steps=5 format=3 uid="uid://ojhdipr6cqf7"]
 
 [ext_resource type="PackedScene" uid="uid://cv5k5c6yxmrrf" path="res://scenes/ui/inventory.tscn" id="1_7d52p"]
 [ext_resource type="Script" path="res://scenes/ui/UiToggle.gd" id="1_etd3g"]
-[ext_resource type="Script" path="res://scenes/ui/CraftManager.gd" id="3_byols"]
 [ext_resource type="Resource" uid="uid://bb0pdn6tfl8iw" path="res://resources/default/player_inventory.tres" id="3_f686v"]
-[ext_resource type="PackedScene" uid="uid://djsnn6ira6jxd" path="res://craft_info.tscn" id="4_5imam"]
-[ext_resource type="Resource" uid="uid://dhpyqq4r5w8p3" path="res://resources/default/default_recipes.tres" id="4_fdnjd"]
+[ext_resource type="PackedScene" uid="uid://ll88yuxuax1w" path="res://craft_manager.tscn" id="4_r2nge"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -49,10 +47,5 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="CraftManager" type="VBoxContainer" parent="Toggle/RightSideMargin/RightSidePanel/CraftInfoMargin"]
-layout_mode = 2
-script = ExtResource("3_byols")
-recipes_data = ExtResource("4_fdnjd")
-
-[node name="CraftInfo" parent="Toggle/RightSideMargin/RightSidePanel/CraftInfoMargin/CraftManager" instance=ExtResource("4_5imam")]
+[node name="CraftManager" parent="Toggle/RightSideMargin/RightSidePanel/CraftInfoMargin" instance=ExtResource("4_r2nge")]
 layout_mode = 2

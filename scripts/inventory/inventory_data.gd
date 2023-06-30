@@ -10,7 +10,7 @@ func find_or_create_item_slot(item: ItemData) -> SlotData:
 			return slot
 	for i in slots.size():
 		if(slots[i] == null):
-			slots[i] = SlotData.new(item)
+			slots[i] = SlotData.create(item)
 			return slots[i]
 	return null
 

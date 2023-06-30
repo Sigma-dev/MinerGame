@@ -14,15 +14,26 @@ offset_right = 184.0
 offset_bottom = 60.0
 script = ExtResource("1_x3xp3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="Ingredients" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Ingredients" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="ItemDescription" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -32,20 +43,25 @@ horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = -9
 
-[node name="ItemTexture" type="TextureRect" parent="HBoxContainer/VBoxContainer2"]
+[node name="ItemTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("1_ha7f2")
 expand_mode = 2
+stretch_mode = 5
 
-[node name="ItemDescription" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Rocks"
 label_settings = SubResource("LabelSettings_mguv2")
 horizontal_alignment = 1
+
+[node name="CraftButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CRAFT"
