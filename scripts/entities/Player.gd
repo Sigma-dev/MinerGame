@@ -11,7 +11,7 @@ var facing_right = true
 var state = "default"
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var inventory: InventoryData = preload("res://resources/inventories/player_inventory.tres")
+var inventory: InventoryData = preload("res://resources/default/player_inventory.tres")
 
 func updateAnimation():
 	if facing_right:

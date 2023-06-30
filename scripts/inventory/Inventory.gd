@@ -4,6 +4,7 @@ var slot_scene : PackedScene = preload("res://scenes/ui/slot.tscn")
 @export var inventory_data: InventoryData = null
 @onready var slots = $MarginContainer/Slots
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if inventory_data:
@@ -26,6 +27,3 @@ func _update():
 		if slot_data:
 			instance.set_data(slot_data)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

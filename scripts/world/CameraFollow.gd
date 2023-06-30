@@ -21,4 +21,4 @@ func _physics_process(delta):
 	if target_pos == null:
 		return
 	global_position = lerp(global_position, target_pos, 0.05)
-	pass
+

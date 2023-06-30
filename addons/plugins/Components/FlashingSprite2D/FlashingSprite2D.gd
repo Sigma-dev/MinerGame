@@ -17,5 +17,6 @@ func _process(delta):
 	material.set_shader_parameter("flash_amount", flash_remaining)
 	if flash_remaining > 0:
 		flash_remaining -= decay_rate
-	if flash_remaining < 0:
+	if flash_remaining <= 0:
 		flash_remaining = 0
+

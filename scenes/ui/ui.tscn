@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://ojhdipr6cqf7"]
+
+[ext_resource type="PackedScene" uid="uid://cv5k5c6yxmrrf" path="res://scenes/ui/inventory.tscn" id="1_7d52p"]
+[ext_resource type="Script" path="res://scenes/ui/UiToggle.gd" id="1_etd3g"]
+[ext_resource type="Script" path="res://scenes/ui/CraftManager.gd" id="3_byols"]
+[ext_resource type="Resource" uid="uid://bb0pdn6tfl8iw" path="res://resources/default/player_inventory.tres" id="3_f686v"]
+[ext_resource type="PackedScene" uid="uid://djsnn6ira6jxd" path="res://craft_info.tscn" id="4_5imam"]
+[ext_resource type="Resource" uid="uid://dhpyqq4r5w8p3" path="res://resources/default/default_recipes.tres" id="4_fdnjd"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Toggle" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_etd3g")
+
+[node name="Inventory" parent="Toggle" instance=ExtResource("1_7d52p")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 26.0
+inventory_data = ExtResource("3_f686v")
+
+[node name="RightSideMargin" type="MarginContainer" parent="Toggle"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 742.0
+offset_right = 984.0
+offset_bottom = 231.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="RightSidePanel" type="PanelContainer" parent="Toggle/RightSideMargin"]
+layout_mode = 2
+
+[node name="CraftInfoMargin" type="MarginContainer" parent="Toggle/RightSideMargin/RightSidePanel"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="CraftManager" type="VBoxContainer" parent="Toggle/RightSideMargin/RightSidePanel/CraftInfoMargin"]
+layout_mode = 2
+script = ExtResource("3_byols")
+recipes_data = ExtResource("4_fdnjd")
+
+[node name="CraftInfo" parent="Toggle/RightSideMargin/RightSidePanel/CraftInfoMargin/CraftManager" instance=ExtResource("4_5imam")]
+layout_mode = 2

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CraftRecipesData" load_steps=3 format=3 uid="uid://dhpyqq4r5w8p3"]
+
+[ext_resource type="Resource" uid="uid://77y7bmc5p16" path="res://resources/crafts/craft_furnace.tres" id="1_7ntu5"]
+[ext_resource type="Script" path="res://scripts/inventory/craft_recipes_data.gd" id="1_e3jru"]
+
+[resource]
+script = ExtResource("1_e3jru")
+recipes = Array[Resource("res://scripts/inventory/craft_data.gd")]([ExtResource("1_7ntu5")])
