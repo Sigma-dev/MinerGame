@@ -12,6 +12,7 @@ var state = "default"
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var inventory: InventoryData = preload("res://resources/default/player_inventory.tres")
+@onready var construction_manager : ConstructionManager = $ConstructionManager
 
 func updateAnimation():
 	if facing_right:
@@ -32,7 +33,9 @@ func updateAnimation():
 	
 func is_player():
 	return true
-
+	
+func get_construction_manager() -> ConstructionManager:
+	return construction_manager
 func endMining():
 	mining_cast.force_shapecast_update()
 	for i in mining_cast.get_collision_count():

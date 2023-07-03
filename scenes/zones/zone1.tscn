@@ -123,9 +123,15 @@ texture = ExtResource("1_8sq5u")
 5:0/0 = 0
 5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_r7us2"]
-physics_layer_0/collision_layer = 3
+physics_layer_0/collision_layer = 11
 sources/0 = SubResource("TileSetAtlasSource_wfgsy")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_moq5c"]

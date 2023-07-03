@@ -5,10 +5,11 @@ var slot_scene : PackedScene = preload("res://scenes/ui/inventory/inventory_slot
 @onready var slots = $HBoxContainer/PanelContainer/MarginContainer/Slots
 @onready var item_texture = $HBoxContainer/SlotInfo/MarginContainer2/PanelContainer/Container/ItemTexture
 @onready var item_name = $HBoxContainer/SlotInfo/MarginContainer2/PanelContainer/Container/ItemName
-@onready var action_button = $HBoxContainer/SlotInfo/MarginContainer2/PanelContainer/Container/ActionButton
+@onready var action_button : Button = $HBoxContainer/SlotInfo/MarginContainer2/PanelContainer/Container/ActionButton
 
 var selected_slot : SlotData = null
 @onready var slot_info = $HBoxContainer/SlotInfo
+@onready var construction_manager : ConstructionManager = get_tree().get_nodes_in_group("Player")[0].get_construction_manager()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +38,8 @@ func _update():
 		item_texture.texture = selected_slot.item_data.texture
 		item_name.text = selected_slot.item_data.name
 		action_button.visible = selected_slot.item_data.construction != null
+		if selected_slot.item_data.construction != null:
+			action_button.pressed.connect(func(): construction_manager.start_preview(selected_slot.item_data.construction))
 			
 func on_slot_selected(slot_data: SlotData):
 	selected_slot = slot_data

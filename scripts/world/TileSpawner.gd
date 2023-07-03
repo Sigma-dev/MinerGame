@@ -1,4 +1,5 @@
 extends Node2D
+class_name TileSpawner
 
 var rng = RandomNumberGenerator.new()
 @export var to_spawn: PackedScene
@@ -26,16 +27,20 @@ func get_random_available_ground_tile():
 	randomize()
 	candidates.shuffle()
 	for tile in candidates:
-		var ontop_pos = Vector2i(tile.x, tile.y - 1)
-		var ontop_tile = tilemap.get_cell_tile_data(0, ontop_pos)
-		if (ontop_tile != null && ontop_tile.get_collision_polygons_count(0) > 0):
-			continue
-		shapecast.global_position = to_global(tilemap.map_to_local(ontop_pos))
-		shapecast.force_shapecast_update()
-		if (shapecast.get_collision_count() > 0):
-			continue
-		return tile
+		if (is_tile_available(tile)):
+			return tile
 	return null
+
+func is_tile_available(tile : Vector2i) -> bool:
+	var ontop_pos = Vector2i(tile.x, tile.y - 1)
+	var ontop_tile = tilemap.get_cell_tile_data(0, ontop_pos)
+	if (ontop_tile != null && ontop_tile.get_collision_polygons_count(0) > 0):
+		return false
+	shapecast.global_position = to_global(tilemap.map_to_local(ontop_pos))
+	shapecast.force_shapecast_update()
+	if (shapecast.get_collision_count() > 0):
+		return false
+	return true
 
 func spawn_on_random_ground():
 	var tile = get_random_available_ground_tile()
