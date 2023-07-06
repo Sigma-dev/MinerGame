@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://0x1qpnfiq3jq"]
+[gd_scene load_steps=17 format=3 uid="uid://0x1qpnfiq3jq"]
 
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_vhi0q"]
 [ext_resource type="Texture2D" uid="uid://bckfotp31s5tq" path="res://assets/miner.png" id="2_4bbm3"]
-[ext_resource type="Script" path="res://scenes/prefabs/ConstructionManager.gd" id="2_ectqh"]
 [ext_resource type="Script" path="res://addons/plugins/Components/Health/Health.gd" id="3_y42ou"]
 [ext_resource type="Script" path="res://addons/plugins/Components/Hittable/Hittable.gd" id="4_v6xwd"]
 
@@ -172,19 +171,6 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 5
 script = ExtResource("1_vhi0q")
-
-[node name="ConstructionManager" type="Node2D" parent="."]
-script = ExtResource("2_ectqh")
-
-[node name="ConstructionCheck" type="RayCast2D" parent="ConstructionManager"]
-position = Vector2(24, 15)
-target_position = Vector2(0, 3)
-collision_mask = 8
-
-[node name="ConstructionPreview" type="Sprite2D" parent="ConstructionManager"]
-modulate = Color(1, 1, 1, 0.439216)
-texture_filter = 1
-offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

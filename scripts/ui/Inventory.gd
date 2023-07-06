@@ -9,8 +9,8 @@ var slot_scene : PackedScene = preload("res://scenes/ui/inventory/inventory_slot
 
 var selected_slot : SlotData = null
 @onready var slot_info = $HBoxContainer/SlotInfo
-@onready var construction_manager : ConstructionManager = get_tree().get_nodes_in_group("Player")[0].get_construction_manager()
-
+var construction_cursor_scene = preload("res://scenes/prefabs/ConstructionCursor.tscn")
+var construction_cursor = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if inventory_data:
@@ -27,6 +27,8 @@ func _update():
 		return
 	for child in slots.get_children():
 		child.queue_free()
+	if !(inventory_data.slots.has(selected_slot)):
+		selected_slot = null
 	for slot_data in inventory_data.slots:
 		var instance = slot_scene.instantiate()
 		slots.add_child(instance)
@@ -39,9 +41,20 @@ func _update():
 		item_name.text = selected_slot.item_data.name
 		action_button.visible = selected_slot.item_data.construction != null
 		if selected_slot.item_data.construction != null:
-			action_button.pressed.connect(func(): construction_manager.start_preview(selected_slot.item_data.construction))
+			action_button.pressed.connect(try_spawn_cursor)
 			
+func try_spawn_cursor():
+	if (construction_cursor != null || is_instance_valid(construction_cursor)):
+		return
+	print("spawned")
+	construction_cursor = construction_cursor_scene.instantiate()
+	construction_cursor.set_data(selected_slot.item_data, inventory_data)
+	owner.get_parent().add_child(construction_cursor)
+	pass
+	
 func on_slot_selected(slot_data: SlotData):
+	if construction_cursor:
+		construction_cursor.queue_free()
 	selected_slot = slot_data
 	_update()
 

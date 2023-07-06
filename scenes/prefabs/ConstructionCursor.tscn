@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://3fs387vulxps"]
+
+[ext_resource type="Script" path="res://scenes/prefabs/ConstructionCursor.gd" id="1_0a3xl"]
+[ext_resource type="Texture2D" uid="uid://b4p5bgyad5o47" path="res://assets/New Piskel (2).png" id="2_xjryv"]
+
+[node name="ConstructionCursor" type="Node2D"]
+script = ExtResource("1_0a3xl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.407843)
+texture_filter = 1
+centered = false
+offset = Vector2(-8, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 16)
+collision_mask = 8
+hit_from_inside = true
+
+[node name="RangeSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.619608)
+texture_filter = 1
+texture = ExtResource("2_xjryv")

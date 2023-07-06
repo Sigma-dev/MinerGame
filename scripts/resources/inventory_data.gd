@@ -33,7 +33,7 @@ func remove_item_quantity(item_data, quantity):
 		if(slot && slot.item_data == item_data):
 			if slot.quantity > to_remove:
 				slot.quantity -= to_remove
-				return
+				break
 			else:
 				to_remove -= slot.quantity
 				slots[slots.find(slot)] = null
