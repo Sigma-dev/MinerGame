@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv5k5c6yxmrrf"]
+[gd_scene load_steps=4 format=3 uid="uid://cv5k5c6yxmrrf"]
 
 [ext_resource type="Script" path="res://scripts/ui/Inventory.gd" id="1_sru5s"]
+[ext_resource type="Script" path="res://scripts/ui/SlotInfo.gd" id="2_c0p6g"]
 [ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="2_ksi3u"]
 
 [node name="Inventory" type="Control"]
@@ -32,6 +33,7 @@ columns = 6
 [node name="SlotInfo" type="PanelContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+script = ExtResource("2_c0p6g")
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/SlotInfo"]
 layout_mode = 2

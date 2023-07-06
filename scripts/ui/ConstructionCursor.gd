@@ -12,8 +12,6 @@ func set_data(new_item_data: ItemData, new_inv: InventoryData):
 	inv = new_inv
 	item_data = new_item_data
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if item_data == null:
 		return
@@ -22,13 +20,19 @@ func _process(delta):
 	var player_pos = get_player_pos()
 	global_position = get_global_mouse_position()
 	range_sprite.global_position = player_pos
+	var pos = get_construction_pos()
+	if !pos || pos.distance_to(player_pos) > 128:
+		cursor_invalid()
+	else:
+		cursor_valid(pos)
+
+func cursor_invalid():
 	sprite_2d.texture = item_data.construction.preview_texture
 	sprite_2d.modulate = Color(0.5, 0.1, 0.1, 0.5)
 	sprite_2d.offset.y = item_data.construction.height * -16
 	sprite_2d.position = Vector2.ZERO
-	var pos = get_construction_pos()
-	if !pos || pos.distance_to(player_pos) > 128:
-		return
+	
+func cursor_valid(pos):
 	sprite_2d.modulate = Color(0.5, 0.5, 0.5, 0.8)
 	sprite_2d.global_position = pos
 	if (Input.is_action_just_pressed("click")):
@@ -44,7 +48,6 @@ func get_player_pos():
 func get_construction_pos():
 	var col = ray_cast_2d.get_collider()
 	var point = ray_cast_2d.get_collision_point()
-#	construction_preview.visible = false
 	if col is TileMap:
 		var tile_spawner : TileSpawner = col.get_child(0)
 		var tile = col.local_to_map(point)
