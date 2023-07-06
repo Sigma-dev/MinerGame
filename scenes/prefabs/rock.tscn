@@ -14,7 +14,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpxn"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dy8ox"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d40rk"]
 shader = ExtResource("2_ahh51")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_amount = 0.0
@@ -32,7 +32,7 @@ maxHp = 20
 
 [node name="FlashingSprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_dy8ox")
+material = SubResource("ShaderMaterial_d40rk")
 position = Vector2(0, -8)
 texture = ExtResource("3_22lbk")
 hframes = 2

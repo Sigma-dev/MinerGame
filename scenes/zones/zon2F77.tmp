@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cne5jpp3qwjjq"]
+[gd_scene load_steps=8 format=3 uid="uid://cne5jpp3qwjjq"]
 
 [ext_resource type="Texture2D" uid="uid://dhb2553kn5nms" path="res://assets/Rocky Roads/Tilesets/tileset_forest.png" id="1_8sq5u"]
-[ext_resource type="Resource" uid="uid://bmxrhl4ah8ttt" path="res://resources/spawnable/rock.tres" id="3_4h1gs"]
 [ext_resource type="Script" path="res://scripts/world/TileSpawner.gd" id="3_rneug"]
 [ext_resource type="PackedScene" uid="uid://ou6hj6jvnwwp" path="res://scenes/prefabs/sign.tscn" id="4_ql35u"]
-[ext_resource type="Resource" uid="uid://di2fpj3e3s1s2" path="res://resources/spawnable/bush.tres" id="4_vnugj"]
 [ext_resource type="PackedScene" uid="uid://vmwvf5p6g1ea" path="res://scenes/prefabs/crawler.tscn" id="5_qj4xx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wfgsy"]
@@ -146,9 +144,6 @@ layer_0/tile_data = PackedInt32Array(589810, 131072, 1, 589811, 196608, 1, 58981
 
 [node name="TileSpawner" type="Node2D" parent="TileMap"]
 script = ExtResource("3_rneug")
-spawnables = Array[Resource("res://scripts/resources/spawnable_data.gd")]([ExtResource("3_4h1gs"), ExtResource("4_vnugj")])
-spawn_time_min = 1.0
-spawn_time_random_range = 0.0
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="TileMap/TileSpawner"]
 scale = Vector2(0.5, 0.5)

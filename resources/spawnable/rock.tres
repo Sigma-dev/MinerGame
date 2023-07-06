@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpawnableData" load_steps=3 format=3 uid="uid://bmxrhl4ah8ttt"]
+
+[ext_resource type="Script" path="res://scripts/resources/spawnable_data.gd" id="1_yplxn"]
+[ext_resource type="PackedScene" uid="uid://bwstnlgim6mqc" path="res://scenes/prefabs/rock.tscn" id="2_m6h73"]
+
+[resource]
+script = ExtResource("1_yplxn")
+height = 1
+to_spawn = ExtResource("2_m6h73")
