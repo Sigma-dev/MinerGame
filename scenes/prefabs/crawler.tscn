@@ -14,7 +14,7 @@ size = Vector2(16, 16)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2go3f"]
 shader = ExtResource("2_lk20i")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_amount = 0
+shader_parameter/flash_amount = 0.0
 
 [sub_resource type="Animation" id="Animation_17wnx"]
 length = 0.001
