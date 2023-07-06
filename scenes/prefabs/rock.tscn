@@ -14,7 +14,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpxn"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1a0n7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dy8ox"]
 shader = ExtResource("2_ahh51")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_amount = 0.0
@@ -32,7 +32,7 @@ maxHp = 20
 
 [node name="FlashingSprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_1a0n7")
+material = SubResource("ShaderMaterial_dy8ox")
 position = Vector2(0, -8)
 texture = ExtResource("3_22lbk")
 hframes = 2
@@ -51,6 +51,6 @@ resource = ExtResource("9_5uey5")
 to_spawn = ExtResource("10_jxpbs")
 
 [connection signal="damage_taken" from="Health" to="FlashingSprite2D" method="flash"]
-[connection signal="die" from="Health" to="DropSpawner" method="spawn"]
+[connection signal="die" from="Health" to="DropSpawner" method="trigger"]
 [connection signal="get_hit" from="Hittable" to="Health" method="damage"]
 [connection signal="get_hit_point" from="Hittable" to="SparkSpawner" method="spawn_at"]

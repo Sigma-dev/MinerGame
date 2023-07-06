@@ -19,6 +19,7 @@ script = ExtResource("1_cbje2")
 
 [node name="Background" type="Sprite2D" parent="."]
 show_behind_parent = true
+z_index = -2
 position = Vector2(150, 0)
 rotation = 1.5708
 scale = Vector2(1.5, 2806.89)

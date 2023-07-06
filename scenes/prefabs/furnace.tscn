@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1jcs1i82yg4a"]
+
+[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="1_xddbg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="Furnace" type="Sprite2D" parent="Node2D"]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("1_xddbg")
+hframes = 2
+vframes = 5
+
+[node name="Furnace2" type="Sprite2D" parent="Node2D"]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("1_xddbg")
+hframes = 2
+vframes = 5
+frame = 1

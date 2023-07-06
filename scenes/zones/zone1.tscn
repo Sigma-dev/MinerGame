@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cne5jpp3qwjjq"]
+[gd_scene load_steps=9 format=3 uid="uid://cne5jpp3qwjjq"]
 
 [ext_resource type="Texture2D" uid="uid://dhb2553kn5nms" path="res://assets/Rocky Roads/Tilesets/tileset_forest.png" id="1_8sq5u"]
 [ext_resource type="Script" path="res://scripts/world/TileSpawner.gd" id="3_rneug"]
 [ext_resource type="PackedScene" uid="uid://bwstnlgim6mqc" path="res://scenes/prefabs/rock.tscn" id="4_8b5nf"]
 [ext_resource type="PackedScene" uid="uid://ou6hj6jvnwwp" path="res://scenes/prefabs/sign.tscn" id="4_ql35u"]
 [ext_resource type="PackedScene" uid="uid://vmwvf5p6g1ea" path="res://scenes/prefabs/crawler.tscn" id="5_qj4xx"]
-[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="6_ea3ep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wfgsy"]
 texture = ExtResource("1_8sq5u")
@@ -123,9 +122,15 @@ texture = ExtResource("1_8sq5u")
 5:0/0 = 0
 5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_r7us2"]
-physics_layer_0/collision_layer = 3
+physics_layer_0/collision_layer = 11
 sources/0 = SubResource("TileSetAtlasSource_wfgsy")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_moq5c"]
@@ -152,20 +157,4 @@ position = Vector2(-201.6, 119.937)
 zone_coords = Vector2i(-1, 0)
 
 [node name="Crawler" parent="." instance=ExtResource("5_qj4xx")]
-position = Vector2(-198, -26)
-
-[node name="Furnace" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-116.502, 111.891)
-texture = ExtResource("6_ea3ep")
-hframes = 2
-vframes = 5
-
-[node name="Furnace2" type="Sprite2D" parent="Furnace"]
-top_level = true
-texture_filter = 1
-position = Vector2(-116.502, 111.891)
-texture = ExtResource("6_ea3ep")
-hframes = 2
-vframes = 5
-frame = 1
+position = Vector2(-190, -24.05)

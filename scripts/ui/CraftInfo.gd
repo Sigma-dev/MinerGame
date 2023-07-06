@@ -23,7 +23,7 @@ func update():
 		var instance = ingredient_scene.instantiate()
 		ingredients.add_child(instance)
 		instance.set_data(ingredient)
-	item_name = crafting_recipe.product.name
+	item_name.text = crafting_recipe.product.name
 	item_texture.texture = crafting_recipe.product.texture
 	item_description.text = crafting_recipe.product.hint
 	craft_button.visible = crafting_recipe.can_craft(player_inventory)
