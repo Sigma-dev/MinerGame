@@ -38,4 +38,12 @@ func remove_item_quantity(item_data, quantity):
 				to_remove -= slot.quantity
 				slots[slots.find(slot)] = null
 	on_update.emit()
+	
+func get_slot_index(slot: SlotData) -> int:
+	return slots.find(slot)
 
+func place_slot_at(slot: SlotData, index: int) -> SlotData:
+	var old = slots[index]
+	slots[index] = slot
+	return old
+		

@@ -8,6 +8,7 @@
 script = ExtResource("2_hu5eo")
 quantity = 1
 item_data = ExtResource("1_vv463")
+uuid = -1
 
 [resource]
 script = ExtResource("3_1yb5s")
