@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cne5jpp3qwjjq"]
+[gd_scene load_steps=11 format=3 uid="uid://cne5jpp3qwjjq"]
 
 [ext_resource type="Texture2D" uid="uid://dhb2553kn5nms" path="res://assets/Rocky Roads/Tilesets/tileset_forest.png" id="1_8sq5u"]
 [ext_resource type="Resource" uid="uid://bmxrhl4ah8ttt" path="res://resources/spawnable/rock.tres" id="3_4h1gs"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ou6hj6jvnwwp" path="res://scenes/prefabs/sign.tscn" id="4_ql35u"]
 [ext_resource type="Resource" uid="uid://di2fpj3e3s1s2" path="res://resources/spawnable/bush.tres" id="4_vnugj"]
 [ext_resource type="PackedScene" uid="uid://vmwvf5p6g1ea" path="res://scenes/prefabs/crawler.tscn" id="5_qj4xx"]
+[ext_resource type="PackedScene" uid="uid://c1jcs1i82yg4a" path="res://scenes/prefabs/furnace.tscn" id="7_728uo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wfgsy"]
 texture = ExtResource("1_8sq5u")
@@ -158,6 +159,10 @@ target_position = Vector2(0, 0)
 [node name="Sign" parent="." instance=ExtResource("4_ql35u")]
 position = Vector2(-201.6, 119.937)
 zone_coords = Vector2i(-1, 0)
+gold_price = 5
 
 [node name="Crawler" parent="." instance=ExtResource("5_qj4xx")]
 position = Vector2(-190, -24.05)
+
+[node name="Node2D" parent="." instance=ExtResource("7_728uo")]
+position = Vector2(-142.249, 127.998)

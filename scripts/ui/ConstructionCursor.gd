@@ -2,22 +2,29 @@ class_name ConstructionCursor
 
 extends Node2D
 
+static var instance = null
 @onready var sprite_2d = $Sprite2D
 @onready var ray_cast_2d = $RayCast2D
-var slot_data : SlotData = null
+static var slot_data : SlotData = SlotData.new()
 @onready var range_sprite = $RangeSprite
-var inv : InventoryData = null
+static var construction_cursor_scene = preload("res://scenes/prefabs/ConstructionCursor.tscn")
+static var inv = preload("res://resources/default/player_inventory.tres")
 
-func set_data(new_slot_data: SlotData, new_inv: InventoryData):
-	inv = new_inv
+static func set_data(new_slot_data: SlotData, new_inv: InventoryData, parent: Node):
+	#inv = new_inv
+	if !instance:
+		instance = construction_cursor_scene.instantiate()
+		parent.add_child(instance) 
 	slot_data = new_slot_data
 
 func _process(delta):
-	if slot_data == null:
+	if slot_data.is_empty():
+		visible = false
 		return
+	visible = true
 	if (Input.is_action_just_pressed("alt_click")):
 		inv.add_item(slot_data.item_data, slot_data.quantity)
-		queue_free()
+		slot_data.quantity = 0
 	var player_pos = get_player_pos()
 	global_position = get_global_mouse_position()
 	range_sprite.global_position = player_pos
@@ -48,12 +55,12 @@ func cursor_valid(pos):
 		if slot_data.quantity > 1:
 			inv.add_item(slot_data.item_data, slot_data.quantity - 1)
 		#inv.remove_item_quantity(slot_data.item_data, slot_data.quantity)
-		queue_free()
+		slot_data.quantity -= 1
 
 func get_player_pos():
 	return get_tree().get_nodes_in_group("Player")[0].global_position
 
-func get_slot_data() -> SlotData:
+static func get_slot_data() -> SlotData:
 	return slot_data
 
 func get_construction_pos():

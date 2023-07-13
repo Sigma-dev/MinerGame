@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv5k5c6yxmrrf"]
+[gd_scene load_steps=5 format=3 uid="uid://cv5k5c6yxmrrf"]
 
 [ext_resource type="Script" path="res://scripts/ui/Inventory.gd" id="1_sru5s"]
+[ext_resource type="Resource" uid="uid://bb0pdn6tfl8iw" path="res://resources/default/player_inventory.tres" id="2_6pk18"]
 [ext_resource type="Script" path="res://scripts/ui/SlotInfo.gd" id="2_c0p6g"]
 [ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="2_ksi3u"]
 
@@ -8,6 +9,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_sru5s")
+inventory_data = ExtResource("2_6pk18")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
