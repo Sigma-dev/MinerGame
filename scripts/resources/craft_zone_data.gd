@@ -10,9 +10,9 @@ var products_inv : InventoryData = InventoryData.new()
 		crafting_recipes = new_val
 		update_inventories()
 @export var range : int = 32
-@export var idle_anim : Array[Texture] = []
-@export var fuel_present_anim : Array[Texture] = []
-@export var fuel_burning_anim : Array[Texture] = [] 
+@export var idle_anim : TileAnimation = null
+@export var fuel_present_anim : TileAnimation = null
+@export var fuel_burning_anim : TileAnimation = null
 @export var fuel_attributes: Array[ItemAttributeData] = []:
 	set(new_val):
 		fuel_attributes = new_val
@@ -28,23 +28,23 @@ var anim_index = 0
 func get_texture():
 	if current_texture:
 		return current_texture
-	return idle_anim[0]
+	return idle_anim.get_current_frame()
 
 func process(delta):
-	time_till_next_anim -= delta
-	if (time_till_next_anim <= 0):
-		time_till_next_anim = anim_time
-		anim_index += 1
-	current_texture = idle_anim[anim_index % idle_anim.size()]
+	fuel_burning_anim.run(delta)
+	fuel_present_anim.run(delta)
+	idle_anim.run(delta)
+	current_texture = idle_anim.get_current_frame()
 	if fuel_inv.get_item_count() > 0:
-		current_texture = fuel_present_anim[anim_index % fuel_present_anim.size()]
+		current_texture = fuel_present_anim.get_current_frame()
 	if !current_recipe:
 		current_recipe = crafting_recipes.find_possible_craft(ingredients_inv)
 		if !current_recipe:
 			return
 	if (current_recipe):
 		if fuel_remaining > 0:
-			current_texture = fuel_burning_anim[anim_index % fuel_burning_anim.size()]
+			#current_texture = fuel_burning_anim[anim_index % fuel_burning_anim.size()]
+			current_texture = fuel_burning_anim.get_current_frame()
 			fuel_remaining -= 0.02
 			progress += 0.005
 			if progress >= 1:

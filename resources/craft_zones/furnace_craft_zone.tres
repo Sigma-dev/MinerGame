@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftZoneData" load_steps=18 format=3 uid="uid://drwbq58mujp7q"]
+[gd_resource type="Resource" script_class="CraftZoneData" load_steps=16 format=3 uid="uid://drwbq58mujp7q"]
 
 [ext_resource type="Script" path="res://scripts/resources/craft_zone_data.gd" id="1_e8tg4"]
 [ext_resource type="Resource" uid="uid://b4cf4aor6mg0u" path="res://resources/items/berries.tres" id="1_utw5a"]
@@ -7,7 +7,8 @@
 [ext_resource type="Resource" uid="uid://xvxjp851ic2o" path="res://resources/items/rock.tres" id="3_rl6r7"]
 [ext_resource type="Script" path="res://scripts/resources/crafting_recipes_data.gd" id="4_qivp3"]
 [ext_resource type="Resource" uid="uid://bl6yaqgji0jdg" path="res://resources/items/attributes/flammability.tres" id="6_q28i4"]
-[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="7_rj3ja"]
+[ext_resource type="Script" path="res://scripts/resources/tile_animation.gd" id="8_a3myb"]
+[ext_resource type="Texture2D" uid="uid://c86uf8bpj73io" path="res://resources/textures/furnace_texture.tres" id="9_psebi"]
 
 [sub_resource type="Resource" id="Resource_2aeb0"]
 script = ExtResource("2_8p0m2")
@@ -24,36 +25,33 @@ produced_amount = 1
 script = ExtResource("4_qivp3")
 recipes = Array[ExtResource("3_8s3bk")]([SubResource("Resource_svfem")])
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxemy"]
-atlas = ExtResource("7_rj3ja")
-region = Rect2(32, 0, 16, 32)
+[sub_resource type="Resource" id="Resource_lqjfn"]
+script = ExtResource("8_a3myb")
+texture = ExtResource("9_psebi")
+start_frame = 2
+end_frame = 5
+frame_duration = 0.2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xin3"]
-atlas = ExtResource("7_rj3ja")
-region = Rect2(48, 0, 16, 32)
+[sub_resource type="Resource" id="Resource_2s54l"]
+script = ExtResource("8_a3myb")
+texture = ExtResource("9_psebi")
+start_frame = 1
+end_frame = 1
+frame_duration = 0.2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sduyr"]
-atlas = ExtResource("7_rj3ja")
-region = Rect2(64, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8lm4"]
-atlas = ExtResource("7_rj3ja")
-region = Rect2(80, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4qu37"]
-atlas = ExtResource("7_rj3ja")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c6thq"]
-atlas = ExtResource("7_rj3ja")
-region = Rect2(0, 0, 16, 32)
+[sub_resource type="Resource" id="Resource_d8k0e"]
+script = ExtResource("8_a3myb")
+texture = ExtResource("9_psebi")
+start_frame = 0
+end_frame = 0
+frame_duration = 0.2
 
 [resource]
 script = ExtResource("1_e8tg4")
 processing_time = 1.0
 crafting_recipes = SubResource("Resource_dke8f")
 range = 54
-idle_anim = Array[Texture]([SubResource("AtlasTexture_c6thq")])
-fuel_present_anim = Array[Texture]([SubResource("AtlasTexture_4qu37")])
-fuel_burning_anim = Array[Texture]([SubResource("AtlasTexture_mxemy"), SubResource("AtlasTexture_6xin3"), SubResource("AtlasTexture_sduyr"), SubResource("AtlasTexture_f8lm4")])
+idle_anim = SubResource("Resource_d8k0e")
+fuel_present_anim = SubResource("Resource_2s54l")
+fuel_burning_anim = SubResource("Resource_lqjfn")
 fuel_attributes = Array[Resource("res://scripts/resources/item_attribute_data.gd")]([ExtResource("6_q28i4")])
