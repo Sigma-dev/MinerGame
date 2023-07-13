@@ -10,6 +10,7 @@ class_name SlotData
 	set(new_val):
 		item_data = new_val
 		on_update.emit()
+var item_filter: Callable = func(item_data: ItemData): return true
 var uuid : int = -1
 static var generator = 0
 

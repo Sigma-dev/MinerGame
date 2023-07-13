@@ -66,3 +66,10 @@ func place_slot_at(slot: SlotData, index: int) -> SlotData:
 	slots[index] = slot
 	return old
 		
+func remove_any_item() -> ItemData:
+	for slot in slots:
+		if !slot.is_empty() && slot.quantity > 0:
+			slot.quantity -= 1
+			return slot.item_data
+	return null
+			

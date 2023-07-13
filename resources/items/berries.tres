@@ -13,3 +13,4 @@ name = "Berries"
 hint = "Yummy !"
 stackable = true
 texture = SubResource("AtlasTexture_kycc1")
+attributes = Array[Resource("res://scripts/resources/item_attribute_data.gd")]([])

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/resources/craft_zone_data.gd" id="1_e8tg4"]
 [ext_resource type="Resource" uid="uid://b4cf4aor6mg0u" path="res://resources/items/berries.tres" id="1_utw5a"]
-[ext_resource type="Resource" uid="uid://bpfim2ndbfwrr" path="res://resources/items/branches.tres" id="1_yk2qj"]
 [ext_resource type="Script" path="res://scripts/resources/slot_data.gd" id="2_8p0m2"]
 [ext_resource type="Script" path="res://scripts/resources/crafting_recipe_data.gd" id="3_8s3bk"]
 [ext_resource type="Resource" uid="uid://xvxjp851ic2o" path="res://resources/items/rock.tres" id="3_rl6r7"]
 [ext_resource type="Script" path="res://scripts/resources/crafting_recipes_data.gd" id="4_qivp3"]
+[ext_resource type="Resource" uid="uid://bl6yaqgji0jdg" path="res://resources/items/attributes/flammability.tres" id="6_q28i4"]
 
 [sub_resource type="Resource" id="Resource_2aeb0"]
 script = ExtResource("2_8p0m2")
@@ -25,6 +25,7 @@ recipes = Array[ExtResource("3_8s3bk")]([SubResource("Resource_svfem")])
 
 [resource]
 script = ExtResource("1_e8tg4")
+processing_time = 1.0
 crafting_recipes = SubResource("Resource_dke8f")
-fuel = ExtResource("1_yk2qj")
-range = 32
+range = 54
+fuel_attributes = Array[Resource("res://scripts/resources/item_attribute_data.gd")]([ExtResource("6_q28i4")])

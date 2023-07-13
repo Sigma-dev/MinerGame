@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ojhdipr6cqf7"]
+[gd_scene load_steps=9 format=3 uid="uid://ojhdipr6cqf7"]
 
 [ext_resource type="PackedScene" uid="uid://cv5k5c6yxmrrf" path="res://scenes/ui/inventory/inventory.tscn" id="1_7d52p"]
 [ext_resource type="Script" path="res://scripts/ui/UIToggle.gd" id="1_eui2j"]
@@ -9,6 +9,12 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvc5e"]
 atlas = ExtResource("6_0yaju")
 region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3sx2f"]
+bg_color = Color(0.631373, 0.631373, 0.631373, 0.266667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jft8y"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="UI" type="CanvasLayer"]
 metadata/_edit_vertical_guides_ = [-307.0]
@@ -80,6 +86,15 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = SubResource("AtlasTexture_dvc5e")
 stretch_mode = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="Toggle/ItemProcessing/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3sx2f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jft8y")
+max_value = 1.0
+value = 0.56
+show_percentage = false
 
 [node name="fuel_slots" type="CenterContainer" parent="Toggle/ItemProcessing/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
