@@ -8,6 +8,7 @@ var slot_scene : PackedScene = preload("res://scenes/ui/inventory/inventory_slot
 @onready var ingredients_slots = $MarginContainer/HBoxContainer/IngredientsSlots
 var target_opacity : float = 1.0
 @onready var progress_bar = $MarginContainer/HBoxContainer/VBoxContainer/ProgressBar
+@onready var icon = $MarginContainer/HBoxContainer/VBoxContainer/Icon
 
 func _process(delta):
 	var new = _find_closest_craft_zone()
@@ -20,6 +21,7 @@ func _process(delta):
 		return
 	target_opacity = 1
 	progress_bar.value = craft_zone.progress
+	icon.texture = craft_zone.get_texture()
 	
 func _find_closest_craft_zone() -> CraftZoneData:
 	var player_pos : Vector2 = get_tree().get_nodes_in_group("Player")[0].global_position

@@ -72,4 +72,11 @@ func remove_any_item() -> ItemData:
 			slot.quantity -= 1
 			return slot.item_data
 	return null
+	
+func get_item_count() -> int:
+	var total = 0
+	for slot in slots:
+		if !slot.is_empty():
+			total += slot.quantity
+	return total
 			

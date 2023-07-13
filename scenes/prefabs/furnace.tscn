@@ -1,27 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1jcs1i82yg4a"]
+[gd_scene load_steps=5 format=3 uid="uid://c1jcs1i82yg4a"]
 
 [ext_resource type="Script" path="res://scripts/world/CraftZone.gd" id="1_5b62x"]
 [ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="1_xddbg"]
 [ext_resource type="Resource" uid="uid://drwbq58mujp7q" path="res://resources/craft_zones/furnace_craft_zone.tres" id="2_re8ap"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hppk7"]
+atlas = ExtResource("1_xddbg")
+region = Rect2(0, 0, 16, 32)
+
 [node name="Node2D" type="Node2D" groups=["CraftZone"]]
 script = ExtResource("1_5b62x")
 craft_zone = ExtResource("2_re8ap")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
 position = Vector2(0, -16)
-
-[node name="Furnace" type="Sprite2D" parent="Node2D"]
-z_index = -1
-texture_filter = 1
-texture = ExtResource("1_xddbg")
-hframes = 2
-vframes = 5
-
-[node name="Furnace2" type="Sprite2D" parent="Node2D"]
-z_index = -1
-texture_filter = 1
-texture = ExtResource("1_xddbg")
-hframes = 2
-vframes = 5
-frame = 1
+texture = SubResource("AtlasTexture_hppk7")
