@@ -148,13 +148,15 @@ layer_0/tile_data = PackedInt32Array(589810, 131072, 1, 589811, 196608, 1, 58981
 [node name="TileSpawner" type="Node2D" parent="TileMap"]
 script = ExtResource("3_rneug")
 spawnables = Array[Resource("res://scripts/resources/spawnable_data.gd")]([ExtResource("3_4h1gs"), ExtResource("4_vnugj")])
-spawn_time_min = 1.0
+spawn_time_min = 0.1
 spawn_time_random_range = 0.0
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="TileMap/TileSpawner"]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_moq5c")
 target_position = Vector2(0, 0)
+collision_mask = 17
+collide_with_areas = true
 
 [node name="Sign" parent="." instance=ExtResource("4_ql35u")]
 position = Vector2(-201.6, 119.937)
