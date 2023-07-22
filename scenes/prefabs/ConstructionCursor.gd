@@ -3,21 +3,40 @@ class_name ConstructionCursor
 extends Node2D
 
 static var instance = null
-@onready var sprite_2d = $Sprite2D
-@onready var ray_cast_2d = $RayCast2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var construction_detector: Area2D = $ConstructionDetector
 static var slot_data : SlotData = SlotData.new()
 @onready var range_sprite = $RangeSprite
-static var construction_cursor_scene = preload("res://scenes/prefabs/ConstructionCursor.tscn")
+static var construction_cursor_scene = preload("res://scenes/prefabs/Cursor.tscn")
 static var inv = preload("res://resources/default/player_inventory.tres")
+var hovered_construction = null
 
-static func set_data(new_slot_data: SlotData, new_inv: InventoryData, parent: Node):
-	#inv = new_inv
-	if !instance:
+static func set_data(new_slot_data: SlotData, parent: Node):
+	if is_instance_valid(instance):
+		print("Instance already exists:")
+		print(instance.get_parent())
+	else:
 		instance = construction_cursor_scene.instantiate()
+		print("New parent:")
+		print(parent)
 		parent.add_child(instance) 
 	slot_data = new_slot_data
 
+func _physics_process(delta):
+	if is_instance_valid(hovered_construction):
+		hovered_construction.modulate = Color(1, 1, 1)
+	var bodies = construction_detector.get_overlapping_areas()
+	if (bodies.size() > 0):
+		hovered_construction = bodies[0].get_parent()
+		hovered_construction.modulate = Color(1,0.2, 0.2) 
+		if (Input.is_action_just_pressed("alt_click")):
+			hovered_construction.queue_free()
+			inv.add_item(hovered_construction.get_item_data())
+
 func _process(delta):
+	global_position = get_global_mouse_position()
+	sprite_2d.global_position = global_position
 	if slot_data.is_empty():
 		visible = false
 		return
@@ -26,7 +45,6 @@ func _process(delta):
 		inv.add_item(slot_data.item_data, slot_data.quantity)
 		slot_data.quantity = 0
 	var player_pos = get_player_pos()
-	global_position = get_global_mouse_position()
 	range_sprite.global_position = player_pos
 	var pos = null
 	if slot_data.item_data.construction:
@@ -43,17 +61,18 @@ func cursor_invalid():
 	else:
 		sprite_2d.texture = slot_data.item_data.texture
 	sprite_2d.modulate = Color(0.5, 0.1, 0.1, 0.5)
-	sprite_2d.position = Vector2.ZERO
+	#sprite_2d.position = Vector2.ZERO
 	
 func cursor_valid(pos):
 	sprite_2d.modulate = Color(0.5, 0.5, 0.5, 0.8)
 	sprite_2d.global_position = pos
 	if (Input.is_action_just_pressed("click")):
-		var construction =  slot_data.item_data.construction.construction.instantiate()
+		var construction =  ConstructionData.construction.instantiate()
+		construction.construction_item = slot_data.item_data
 		construction.global_position = pos
 		get_parent().add_child(construction)
-		if slot_data.quantity > 1:
-			inv.add_item(slot_data.item_data, slot_data.quantity - 1)
+		#if slot_data.quantity > 1:
+		#	inv.add_item(slot_data.item_data, slot_data.quantity - 1)
 		#inv.remove_item_quantity(slot_data.item_data, slot_data.quantity)
 		slot_data.quantity -= 1
 
@@ -69,6 +88,7 @@ func get_construction_pos():
 	if col is TileMap:
 		var tile_spawner : TileSpawner = col.get_child(0)
 		var tile = col.local_to_map(point)
+		print(col.map_to_local(tile))
 		if !(tile_spawner.is_tile_available(tile)):
 			return null
 		var tile_pos = col.map_to_local(tile)

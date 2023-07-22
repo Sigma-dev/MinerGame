@@ -38,6 +38,8 @@ func is_tile_available(tile : Vector2i) -> bool:
 		return false
 	shapecast.global_position = to_global(tilemap.map_to_local(ontop_pos))
 	shapecast.force_shapecast_update()
+	for col in shapecast.collision_result:
+		print(col.collider.name)
 	if (shapecast.get_collision_count() > 0):
 		return false
 	return true

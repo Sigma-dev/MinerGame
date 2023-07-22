@@ -14,9 +14,13 @@ func _ready():
 	if inventory_data:
 		set_inventory_data(inventory_data)	
 		_update()
+		
+func _process(delta):
+	get_tree().root.get_child(0).add_child(ConstructionCursor.instance)
 
 func set_inventory_data(new_data: InventoryData):
 	inventory_data = new_data
+	ConstructionCursor.set_data(SlotData.create(), get_tree().root.get_child(0))
 	inventory_data.on_update.connect(_update)
 
 func _update():

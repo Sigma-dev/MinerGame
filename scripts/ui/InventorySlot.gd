@@ -25,10 +25,10 @@ func on_select():
 	var carried = ConstructionCursor.get_slot_data()
 	if (!carried.is_empty()) && !(slot_data.item_filter.call(carried.item_data)):
 		return
-	ConstructionCursor.set_data(slot_data.duplicate(), null, get_tree().root.get_child(0))
+	ConstructionCursor.set_data(slot_data.duplicate(), get_tree().root.get_child(0))
 	if (carried && !slot_data.is_empty() && !carried.is_empty() && slot_data.item_data.name == carried.item_data.name):
 		slot_data.quantity += carried.quantity
-		ConstructionCursor.set_data(SlotData.create(), null, get_tree().root.get_child(0))
+		ConstructionCursor.set_data(SlotData.create(), get_tree().root.get_child(0))
 	else:
 		slot_data.clear()
 		if !carried.is_empty():
