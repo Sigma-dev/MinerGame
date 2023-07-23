@@ -2,16 +2,35 @@ extends Resource
 class_name InventoryData
 
 signal on_update
-@export var slots : Array[SlotData]
+@export var slots : Array[SlotData] = []:
+	set(new_val): 
+		slots = new_val
+		on_slots_change()
+
+func _init():
+	on_slots_change()
+	
+	
+func clear():
+	slots = []
+
+func on_slots_change():
+	for i in slots.size():
+		if !slots[i]:
+			slots[i] = SlotData.create()
+		slots[i].on_update.connect(on_slot_update)
+
+func on_slot_update():
+	on_update.emit()
 
 func find_or_create_item_slot(item: ItemData) -> SlotData:
 	for slot in slots:
-		if(slot && slot.item_data == item):
+		if(slot.item_data == item):
 			return slot
-	for i in slots.size():
-		if(slots[i] == null):
-			slots[i] = SlotData.create(item)
-			return slots[i]
+	for slot in slots:
+		if(slot.is_empty()):
+			slot.item_data = item
+			return slot
 	return null
 
 func add_item(item_data: ItemData, amount: int = 1):
@@ -36,6 +55,28 @@ func remove_item_quantity(item_data, quantity):
 				break
 			else:
 				to_remove -= slot.quantity
-				slots[slots.find(slot)] = null
+				slot.clear()
 	on_update.emit()
+	
+func get_slot_index(slot: SlotData) -> int:
+	return slots.find(slot)
 
+func place_slot_at(slot: SlotData, index: int) -> SlotData:
+	var old = slots[index]
+	slots[index] = slot
+	return old
+		
+func remove_any_item() -> ItemData:
+	for slot in slots:
+		if !slot.is_empty() && slot.quantity > 0:
+			slot.quantity -= 1
+			return slot.item_data
+	return null
+	
+func get_item_count() -> int:
+	var total = 0
+	for slot in slots:
+		if !slot.is_empty():
+			total += slot.quantity
+	return total
+			

@@ -69,6 +69,8 @@ alt_click={
 2d_physics/layer_2="Walkable"
 2d_physics/layer_3="Player"
 2d_physics/layer_4="Ground"
+2d_physics/layer_5="PreventResourceSpawn"
+2d_physics/layer_6="Construction"
 
 [rendering]
 

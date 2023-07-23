@@ -11,9 +11,9 @@ func can_craft(inventory: InventoryData):
 			return false
 	return true
 	
-func craft(inventory: InventoryData):
-	if !can_craft(inventory):
+func craft(input_inv: InventoryData, output_inv: InventoryData):
+	if !can_craft(input_inv):
 		return null
 	for ingredient in ingredients:
-		inventory.remove_item_quantity(ingredient.item_data, ingredient.quantity)
-	return inventory.add_item(product, produced_amount)
+		input_inv.remove_item_quantity(ingredient.item_data, ingredient.quantity)
+	return output_inv.add_item(product, produced_amount)

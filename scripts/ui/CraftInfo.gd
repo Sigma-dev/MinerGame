@@ -14,7 +14,7 @@ func _ready():
 	player_inventory.on_update.connect(update)
 	
 func _craft():
-	crafting_recipe.craft(player_inventory)
+	crafting_recipe.craft(player_inventory, player_inventory)
 
 func update(): 
 	for child in ingredients.get_children():

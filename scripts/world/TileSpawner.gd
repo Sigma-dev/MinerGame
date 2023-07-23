@@ -2,13 +2,13 @@ extends Node2D
 class_name TileSpawner
 
 var rng = RandomNumberGenerator.new()
-@export var to_spawn: PackedScene
+@export var spawnables: Array[SpawnableData]
 @onready var tilemap: TileMap = get_parent()
 @onready var shapecast: ShapeCast2D = $ShapeCast2D
 var next_spawn_time = -1
 var elapsed = 0
-var spawn_time_min = 5.0
-var spawn_time_random_range = 3.0
+@export var spawn_time_min = 5.0
+@export var spawn_time_random_range = 3.0
 
 func get_ground_tiles():
 	var coords = [
@@ -48,9 +48,9 @@ func spawn_on_random_ground():
 		return
 	var top_tile = Vector2i(tile.x, tile.y - 1)
 	var spawn_pos = to_global((tilemap.map_to_local(tile) + tilemap.map_to_local(top_tile)) / 2)
-	spawn_at_pos(spawn_pos, to_spawn)
+	spawn_at_pos(spawn_pos, spawnables[randi() % spawnables.size()].to_spawn)
 
-func spawn_at_pos(pos, object = to_spawn, ):
+func spawn_at_pos(pos, object):
 	var instance = object.instantiate()
 	instance.global_position = pos
 	add_child(instance);

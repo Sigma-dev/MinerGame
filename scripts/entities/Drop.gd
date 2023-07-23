@@ -2,6 +2,7 @@ extends RigidBody2D
 @onready var anim : AnimationPlayer = $AnimationPlayer 
 @onready var area : Area2D = $Area2D
 @onready var shape: CollisionShape2D = $CollisionShape2D
+@onready var sprite_2d = $Sprite2D
 var item: ItemData = null
 var target : Node2D = null
 var chase_time = 1
@@ -12,6 +13,7 @@ func _ready():
 	
 func set_resource(resource):
 	item = resource
+	sprite_2d.texture = item.texture
 
 func chase(delta):
 	var dir = (target.global_position - global_position).normalized()
