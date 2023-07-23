@@ -13,13 +13,8 @@ static var inv = preload("res://resources/default/player_inventory.tres")
 var hovered_construction = null
 
 static func set_data(new_slot_data: SlotData, parent: Node):
-	if is_instance_valid(instance):
-		print("Instance already exists:")
-		print(instance.get_parent())
-	else:
+	if !is_instance_valid(instance):
 		instance = construction_cursor_scene.instantiate()
-		print("New parent:")
-		print(parent)
 		parent.add_child(instance) 
 	slot_data = new_slot_data
 
@@ -27,6 +22,7 @@ func _physics_process(delta):
 	if is_instance_valid(hovered_construction):
 		hovered_construction.modulate = Color(1, 1, 1)
 	var bodies = construction_detector.get_overlapping_areas()
+	bodies = bodies.filter(func(body): return body.get_parent(	) is Construction)
 	if (bodies.size() > 0):
 		hovered_construction = bodies[0].get_parent()
 		hovered_construction.modulate = Color(1,0.2, 0.2) 
@@ -88,7 +84,6 @@ func get_construction_pos():
 	if col is TileMap:
 		var tile_spawner : TileSpawner = col.get_child(0)
 		var tile = col.local_to_map(point)
-		print(col.map_to_local(tile))
 		if !(tile_spawner.is_tile_available(tile)):
 			return null
 		var tile_pos = col.map_to_local(tile)
