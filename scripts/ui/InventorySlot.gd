@@ -14,8 +14,8 @@ func set_data(new_slot_data: SlotData):
 	slot_data = new_slot_data
 	if slot_data.is_empty():
 		return
-	var text = slot_data.item_data.texture
-	texture.texture = text
+	var txt = slot_data.item_data.texture
+	texture.texture = txt
 	label.text =  "x" + str(slot_data.quantity)
 	label.visible = true
 

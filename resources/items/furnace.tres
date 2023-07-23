@@ -1,83 +1,63 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=28 format=3 uid="uid://b5qwtp2v56l3j"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=23 format=3 uid="uid://b5qwtp2v56l3j"]
 
 [ext_resource type="Script" path="res://scripts/resources/construction_data.gd" id="1_f1ryk"]
 [ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1_ftxa5"]
+[ext_resource type="Resource" uid="uid://bh63s2puv0888" path="res://resources/items/berries.tres" id="1_ovaih"]
 [ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="2_lx66i"]
-[ext_resource type="Resource" uid="uid://b4cf4aor6mg0u" path="res://resources/items/berries.tres" id="2_oj265"]
-[ext_resource type="Script" path="res://scripts/resources/slot_data.gd" id="3_v4oeu"]
-[ext_resource type="Resource" uid="uid://xvxjp851ic2o" path="res://resources/items/rock.tres" id="4_l7vd6"]
-[ext_resource type="Script" path="res://scripts/resources/crafting_recipe_data.gd" id="5_ijrs0"]
-[ext_resource type="Script" path="res://scripts/resources/crafting_recipes_data.gd" id="6_eam4r"]
-[ext_resource type="Resource" uid="uid://bl6yaqgji0jdg" path="res://resources/items/attributes/flammability.tres" id="7_jak52"]
-[ext_resource type="Script" path="res://scripts/resources/tile_animation.gd" id="8_se7h8"]
-[ext_resource type="Script" path="res://scripts/resources/craft_zone_data.gd" id="9_tjhop"]
+[ext_resource type="Script" path="res://scripts/resources/slot_data.gd" id="2_w1f1r"]
+[ext_resource type="Resource" uid="uid://xvxjp851ic2o" path="res://resources/items/rock.tres" id="3_fp6al"]
+[ext_resource type="Script" path="res://scripts/resources/crafting_recipe_data.gd" id="4_yd2ie"]
+[ext_resource type="Script" path="res://scripts/resources/crafting_recipes_data.gd" id="5_wxh0n"]
+[ext_resource type="Resource" uid="uid://bl6yaqgji0jdg" path="res://resources/items/attributes/flammability.tres" id="6_7jo8u"]
+[ext_resource type="Script" path="res://scripts/resources/tile_animation.gd" id="7_b0p1k"]
+[ext_resource type="Texture2D" uid="uid://c86uf8bpj73io" path="res://resources/textures/furnace_texture.tres" id="8_4em4a"]
+[ext_resource type="Script" path="res://scripts/resources/craft_zone_data.gd" id="9_v8vik"]
 
-[sub_resource type="Resource" id="Resource_2aeb0"]
-script = ExtResource("3_v4oeu")
+[sub_resource type="Resource" id="Resource_ncdfg"]
+script = ExtResource("2_w1f1r")
 quantity = 1
-item_data = ExtResource("2_oj265")
+item_data = ExtResource("1_ovaih")
 
-[sub_resource type="Resource" id="Resource_svfem"]
-script = ExtResource("5_ijrs0")
-ingredients = Array[ExtResource("3_v4oeu")]([SubResource("Resource_2aeb0")])
-product = ExtResource("4_l7vd6")
+[sub_resource type="Resource" id="Resource_u482f"]
+script = ExtResource("4_yd2ie")
+ingredients = Array[ExtResource("2_w1f1r")]([SubResource("Resource_ncdfg")])
+product = ExtResource("3_fp6al")
 produced_amount = 1
 
-[sub_resource type="Resource" id="Resource_2sv0j"]
-script = ExtResource("6_eam4r")
-recipes = Array[ExtResource("5_ijrs0")]([SubResource("Resource_svfem")])
+[sub_resource type="Resource" id="Resource_3b52i"]
+script = ExtResource("5_wxh0n")
+recipes = Array[ExtResource("4_yd2ie")]([SubResource("Resource_u482f")])
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rprkg"]
-load_path = "res://.godot/imported/furnace.png-54ddd48ded36677a685e662fa9ee9fdc.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ja6us"]
-atlas = SubResource("CompressedTexture2D_rprkg")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="Resource" id="Resource_1t01i"]
-script = ExtResource("8_se7h8")
-texture = SubResource("AtlasTexture_ja6us")
+[sub_resource type="Resource" id="Resource_72506"]
+script = ExtResource("7_b0p1k")
+texture = ExtResource("8_4em4a")
 start_frame = 2
 end_frame = 5
 frame_duration = 0.2
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gntqh"]
-load_path = "res://.godot/imported/furnace.png-54ddd48ded36677a685e662fa9ee9fdc.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xa1c"]
-atlas = SubResource("CompressedTexture2D_gntqh")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="Resource" id="Resource_l1gvy"]
-script = ExtResource("8_se7h8")
-texture = SubResource("AtlasTexture_1xa1c")
+[sub_resource type="Resource" id="Resource_x5k02"]
+script = ExtResource("7_b0p1k")
+texture = ExtResource("8_4em4a")
 start_frame = 1
 end_frame = 1
 frame_duration = 0.2
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7w77a"]
-load_path = "res://.godot/imported/furnace.png-54ddd48ded36677a685e662fa9ee9fdc.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fmocw"]
-atlas = SubResource("CompressedTexture2D_7w77a")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="Resource" id="Resource_rs5f6"]
-script = ExtResource("8_se7h8")
-texture = SubResource("AtlasTexture_fmocw")
+[sub_resource type="Resource" id="Resource_8ai8v"]
+script = ExtResource("7_b0p1k")
+texture = ExtResource("8_4em4a")
 start_frame = 0
 end_frame = 0
 frame_duration = 0.2
 
-[sub_resource type="Resource" id="Resource_yqbyf"]
-script = ExtResource("9_tjhop")
+[sub_resource type="Resource" id="Resource_nr5jm"]
+script = ExtResource("9_v8vik")
 processing_time = 1.0
-crafting_recipes = SubResource("Resource_2sv0j")
-range = 54
-idle_anim = SubResource("Resource_rs5f6")
-fuel_present_anim = SubResource("Resource_l1gvy")
-fuel_burning_anim = SubResource("Resource_1t01i")
-fuel_attributes = Array[Resource("res://scripts/resources/item_attribute_data.gd")]([ExtResource("7_jak52")])
+crafting_recipes = SubResource("Resource_3b52i")
+craft_range = 32
+idle_anim = SubResource("Resource_8ai8v")
+fuel_present_anim = SubResource("Resource_x5k02")
+fuel_burning_anim = SubResource("Resource_72506")
+fuel_attributes = Array[Resource("res://scripts/resources/item_attribute_data.gd")]([ExtResource("6_7jo8u")])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uhb0"]
 atlas = ExtResource("2_lx66i")
@@ -87,7 +67,7 @@ region = Rect2(0, 0, 16, 32)
 script = ExtResource("1_f1ryk")
 height = 2
 preview_texture = SubResource("AtlasTexture_1uhb0")
-craft_zone = SubResource("Resource_yqbyf")
+craft_zone = SubResource("Resource_nr5jm")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4suq"]
 atlas = ExtResource("2_lx66i")

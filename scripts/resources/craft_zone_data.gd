@@ -9,7 +9,7 @@ var products_inv : InventoryData = InventoryData.new()
 	set(new_val):
 		crafting_recipes = new_val
 		update_inventories()
-@export var range : int = 32
+@export var craft_range : int = 32
 @export var idle_anim : TileAnimation = null
 @export var fuel_present_anim : TileAnimation = null
 @export var fuel_burning_anim : TileAnimation = null

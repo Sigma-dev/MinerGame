@@ -31,7 +31,7 @@ func _find_closest_craft_zone() -> CraftZoneData:
 		if !zone.get_data():
 			continue
 		var dist = player_pos.distance_to(zone.global_position)
-		if dist > zone.get_data().range:
+		if dist > zone.get_data().craft_range:
 			continue
 		if !closest || dist < player_pos.distance_to(closest.global_position):
 			closest = zone
