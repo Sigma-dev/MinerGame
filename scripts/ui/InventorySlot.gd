@@ -31,5 +31,6 @@ func on_select():
 		ConstructionCursor.set_data(SlotData.create(), get_tree().root.get_child(0))
 	else:
 		slot_data.clear()
+		ConstructionCursor.instance.update()
 		if !carried.is_empty():
 			slot_data.copy(carried)

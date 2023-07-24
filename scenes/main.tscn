@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/world/world_manager.gd" id="1_cbje2"]
 [ext_resource type="PackedScene" uid="uid://cne5jpp3qwjjq" path="res://scenes/zones/zone1.tscn" id="2_1as00"]
-[ext_resource type="PackedScene" uid="uid://0x1qpnfiq3jq" path="res://scenes/prefabs/player.tscn" id="2_3jwbe"]
+[ext_resource type="PackedScene" uid="uid://0x1qpnfiq3jq" path="res://scenes/prefabs/Player.tscn" id="2_3jwbe"]
 [ext_resource type="PackedScene" uid="uid://htii438dm4ib" path="res://scenes/prefabs/Camera.tscn" id="3_l8pgd"]
 [ext_resource type="Script" path="res://scripts/world/zone_spawner.gd" id="4_s12dn"]
 [ext_resource type="PackedScene" uid="uid://ojhdipr6cqf7" path="res://scenes/ui/ui.tscn" id="6_5pt5p"]
