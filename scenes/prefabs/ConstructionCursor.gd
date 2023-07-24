@@ -15,7 +15,7 @@ var hovered_construction = null
 static func set_data(new_slot_data: SlotData, parent: Node):
 	if !is_instance_valid(instance):
 		instance = construction_cursor_scene.instantiate()
-		parent.add_child(instance) 
+		parent.call_deferred("add_child", instance) 
 	slot_data = new_slot_data
 
 func _physics_process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1jcs1i82yg4a"]
+[gd_scene load_steps=5 format=3 uid="uid://dhtaof6yeeqwo"]
 
 [ext_resource type="Script" path="res://scripts/world/CraftZone.gd" id="1_5b62x"]
 [ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="1_xddbg"]

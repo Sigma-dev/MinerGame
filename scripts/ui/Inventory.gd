@@ -15,8 +15,9 @@ func _ready():
 		set_inventory_data(inventory_data)	
 		_update()
 		
-func _process(delta):
-	get_tree().root.get_child(0).add_child(ConstructionCursor.instance)
+#func _process(delta):
+	#if !ConstructionCursor.instance.get_parent():
+	#	get_tree().root.get_child(0).add_child(ConstructionCursor.instance)
 
 func set_inventory_data(new_data: InventoryData):
 	inventory_data = new_data

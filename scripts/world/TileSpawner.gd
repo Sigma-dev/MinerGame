@@ -11,19 +11,23 @@ var elapsed = 0
 @export var spawn_time_random_range = 3.0
 
 func get_ground_tiles():
-	var coords = [
-		Vector2i(3, 1),
-		Vector2i(4, 1),
-		Vector2i(8, 1),
-		Vector2i(9, 3),
-	]
-	var tiles = []
-	for coord in coords:
-		tiles += tilemap.get_used_cells_by_id(0, 0, coord)
+	var tiles = tilemap.get_used_cells(0).filter(func(coord): 
+		var tile: TileData = tilemap.get_cell_tile_data(0, coord)
+		var peering_bits = [
+			TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_CORNER,
+			TileSet.CELL_NEIGHBOR_BOTTOM_SIDE,
+			TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER,
+		]
+		for bit in peering_bits:
+			if tile.get_terrain_peering_bit(bit):
+				return false
+		return true
+	)
 	return tiles
 
 func get_random_available_ground_tile():
 	var candidates = get_ground_tiles()
+	print(candidates)
 	randomize()
 	candidates.shuffle()
 	for tile in candidates:

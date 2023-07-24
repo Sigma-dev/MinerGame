@@ -42,9 +42,10 @@ func _find_closest_craft_zone() -> CraftZoneData:
 func _update():
 	if (!craft_zone):
 		return
-	craft_zone.ingredients_inv.on_update.connect(_update)
-	craft_zone.fuel_inv.on_update.connect(_update)
-	craft_zone.products_inv.on_update.connect(_update)
+	if !craft_zone.ingredients_inv.on_update.is_connected(_update):
+		craft_zone.ingredients_inv.on_update.connect(_update)
+		craft_zone.fuel_inv.on_update.connect(_update)
+		craft_zone.products_inv.on_update.connect(_update)
 	update_slots()
 	
 func update_slots():
