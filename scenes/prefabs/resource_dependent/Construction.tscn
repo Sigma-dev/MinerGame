@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhtaof6yeeqwo"]
 
-[ext_resource type="Script" path="res://scripts/world/CraftZone.gd" id="1_5b62x"]
-[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="1_xddbg"]
+[ext_resource type="Script" path="res://scripts/world/CraftZone.gd" id="1_uvf7l"]
+[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="2_a52kn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hppk7"]
-atlas = ExtResource("1_xddbg")
+atlas = ExtResource("2_a52kn")
 region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c18o2"]
 size = Vector2(16, 32)
 
 [node name="Node2D" type="Node2D" groups=["CraftZone"]]
-script = ExtResource("1_5b62x")
+script = ExtResource("1_uvf7l")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = -1

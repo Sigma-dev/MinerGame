@@ -27,7 +27,6 @@ func get_ground_tiles():
 
 func get_random_available_ground_tile():
 	var candidates = get_ground_tiles()
-	print(candidates)
 	randomize()
 	candidates.shuffle()
 	for tile in candidates:

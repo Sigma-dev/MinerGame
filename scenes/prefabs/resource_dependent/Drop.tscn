@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://bjfaaps6ijm8y"]
 
-[ext_resource type="Script" path="res://scripts/entities/Drop.gd" id="1_vrewi"]
-[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="2_f1nkd"]
-[ext_resource type="Shader" path="res://scripts/shaders/circle.gdshader" id="3_xoyfs"]
+[ext_resource type="Script" path="res://scripts/entities/Drop.gd" id="1_4xjau"]
+[ext_resource type="Texture2D" uid="uid://cms1nvkyr43o" path="res://assets/small_rocks.png" id="2_g16mi"]
+[ext_resource type="Shader" path="res://scripts/shaders/circle.gdshader" id="3_ugtq7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_apgiu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1uuwj"]
-shader = ExtResource("3_xoyfs")
+shader = ExtResource("3_ugtq7")
 
 [sub_resource type="Gradient" id="Gradient_q75t1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -107,7 +107,7 @@ radius = 20.0
 [node name="Drop" type="RigidBody2D"]
 top_level = true
 lock_rotation = true
-script = ExtResource("1_vrewi")
+script = ExtResource("1_4xjau")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_apgiu")
@@ -115,7 +115,7 @@ debug_color = Color(0, 0.447059, 0.521569, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_f1nkd")
+texture = ExtResource("2_g16mi")
 
 [node name="Aura" type="Sprite2D" parent="Sprite2D"]
 show_behind_parent = true

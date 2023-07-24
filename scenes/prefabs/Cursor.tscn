@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bms6jhpbankcc"]
 
-[ext_resource type="Script" path="res://scenes/prefabs/ConstructionCursor.gd" id="1_xijdn"]
+[ext_resource type="Script" path="res://scripts/ui/ConstructionCursor.gd" id="1_7k8i4"]
 [ext_resource type="Texture2D" uid="uid://ddegawvheq2ef" path="res://assets/berries.png" id="2_44m3a"]
 [ext_resource type="Texture2D" uid="uid://b4p5bgyad5o47" path="res://assets/Circle.png" id="2_uk1ln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcqka"]
 
 [node name="Cursor" type="Node2D"]
-script = ExtResource("1_xijdn")
+script = ExtResource("1_7k8i4")
 
 [node name="RangeSprite" type="Sprite2D" parent="."]
 top_level = true
