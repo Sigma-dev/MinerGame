@@ -6,9 +6,9 @@ class Zone:
 	var spawned: bool
 	var coords: Vector2i
 	
-	func _init(spawn, coords):
-		self.spawn = spawn
-		self.coords = coords
+	func _init(new_spawn, new_coords):
+		self.spawn = new_spawn
+		self.coords = new_coords
 
 var player = null
 var zones : Array[Zone] = []

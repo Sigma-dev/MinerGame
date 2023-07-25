@@ -13,3 +13,4 @@ name = "Rock"
 hint = "Rocky"
 stackable = true
 texture = SubResource("AtlasTexture_igh8r")
+attributes = Array[Resource("res://scripts/resources/item_attribute_data.gd")]([])

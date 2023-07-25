@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpawnableData" load_steps=3 format=3 uid="uid://di2fpj3e3s1s2"]
+
+[ext_resource type="Script" path="res://scripts/resources/spawnable_data.gd" id="1_xftxh"]
+[ext_resource type="PackedScene" uid="uid://krbu2nwmhsmx" path="res://scenes/prefabs/Bush.tscn" id="2_ity1x"]
+
+[resource]
+script = ExtResource("1_xftxh")
+height = 1
+to_spawn = ExtResource("2_ity1x")

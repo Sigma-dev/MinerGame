@@ -1,5 +1,6 @@
 @tool
 extends Node
+class_name Health
 
 @export var maxHp = 100
 @export var destroy_parent_on_death = true

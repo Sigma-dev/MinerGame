@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhtaof6yeeqwo"]
+
+[ext_resource type="Script" path="res://scripts/world/CraftZone.gd" id="1_uvf7l"]
+[ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="2_a52kn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hppk7"]
+atlas = ExtResource("2_a52kn")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c18o2"]
+size = Vector2(16, 32)
+
+[node name="Node2D" type="Node2D" groups=["CraftZone"]]
+script = ExtResource("1_uvf7l")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(0, -16)
+texture = SubResource("AtlasTexture_hppk7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 49
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_c18o2")

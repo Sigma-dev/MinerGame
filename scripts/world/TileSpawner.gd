@@ -2,24 +2,27 @@ extends Node2D
 class_name TileSpawner
 
 var rng = RandomNumberGenerator.new()
-@export var to_spawn: PackedScene
+@export var spawnables: Array[SpawnableData]
 @onready var tilemap: TileMap = get_parent()
 @onready var shapecast: ShapeCast2D = $ShapeCast2D
 var next_spawn_time = -1
 var elapsed = 0
-var spawn_time_min = 5.0
-var spawn_time_random_range = 3.0
+@export var spawn_time_min = 5.0
+@export var spawn_time_random_range = 3.0
 
 func get_ground_tiles():
-	var coords = [
-		Vector2i(3, 1),
-		Vector2i(4, 1),
-		Vector2i(8, 1),
-		Vector2i(9, 3),
-	]
-	var tiles = []
-	for coord in coords:
-		tiles += tilemap.get_used_cells_by_id(0, 0, coord)
+	var tiles = tilemap.get_used_cells(0).filter(func(coord): 
+		var tile: TileData = tilemap.get_cell_tile_data(0, coord)
+		var peering_bits = [
+			TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_CORNER,
+			TileSet.CELL_NEIGHBOR_BOTTOM_SIDE,
+			TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER,
+		]
+		for bit in peering_bits:
+			if tile.get_terrain_peering_bit(bit):
+				return false
+		return true
+	)
 	return tiles
 
 func get_random_available_ground_tile():
@@ -48,9 +51,9 @@ func spawn_on_random_ground():
 		return
 	var top_tile = Vector2i(tile.x, tile.y - 1)
 	var spawn_pos = to_global((tilemap.map_to_local(tile) + tilemap.map_to_local(top_tile)) / 2)
-	spawn_at_pos(spawn_pos, to_spawn)
+	spawn_at_pos(spawn_pos, spawnables[randi() % spawnables.size()].to_spawn)
 
-func spawn_at_pos(pos, object = to_spawn, ):
+func spawn_at_pos(pos, object):
 	var instance = object.instantiate()
 	instance.global_position = pos
 	add_child(instance);

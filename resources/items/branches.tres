@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://blen3voenurvt"]
+
+[ext_resource type="Resource" uid="uid://bl6yaqgji0jdg" path="res://resources/items/attributes/flammability.tres" id="1_fakv8"]
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1_o72s4"]
+[ext_resource type="Texture2D" uid="uid://c34us8mm7owi4" path="res://assets/branch.png" id="2_1gch4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jyif"]
+atlas = ExtResource("2_1gch4")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_o72s4")
+name = "Branches"
+hint = "Branches"
+stackable = true
+texture = SubResource("AtlasTexture_7jyif")
+attributes = Array[Resource("res://scripts/resources/item_attribute_data.gd")]([ExtResource("1_fakv8")])
