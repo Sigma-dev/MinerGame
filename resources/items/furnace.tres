@@ -1,8 +1,63 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://b5qwtp2v56l3j"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=23 format=3 uid="uid://b5qwtp2v56l3j"]
 
 [ext_resource type="Script" path="res://scripts/resources/construction_data.gd" id="1_f1ryk"]
 [ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1_ftxa5"]
+[ext_resource type="Resource" uid="uid://bh63s2puv0888" path="res://resources/items/berries.tres" id="1_oqwl8"]
 [ext_resource type="Texture2D" uid="uid://bnnb3oq3dpduo" path="res://assets/furnace.png" id="2_lx66i"]
+[ext_resource type="Script" path="res://scripts/resources/slot_data.gd" id="2_obomm"]
+[ext_resource type="Resource" uid="uid://xvxjp851ic2o" path="res://resources/items/rock.tres" id="3_5lia4"]
+[ext_resource type="Script" path="res://scripts/resources/crafting_recipe_data.gd" id="4_fork4"]
+[ext_resource type="Script" path="res://scripts/resources/crafting_recipes_data.gd" id="5_1cnjx"]
+[ext_resource type="Resource" uid="uid://bl6yaqgji0jdg" path="res://resources/items/attributes/flammability.tres" id="6_nys8k"]
+[ext_resource type="Script" path="res://scripts/resources/tile_animation.gd" id="6_sw0em"]
+[ext_resource type="Script" path="res://scripts/resources/craft_zone_data.gd" id="6_v87k6"]
+[ext_resource type="Texture2D" uid="uid://c86uf8bpj73io" path="res://resources/textures/furnace_texture.tres" id="7_cqq2a"]
+
+[sub_resource type="Resource" id="Resource_y54fq"]
+script = ExtResource("2_obomm")
+quantity = 1
+item_data = ExtResource("1_oqwl8")
+
+[sub_resource type="Resource" id="Resource_4st0m"]
+script = ExtResource("4_fork4")
+ingredients = Array[ExtResource("2_obomm")]([SubResource("Resource_y54fq")])
+product = ExtResource("3_5lia4")
+produced_amount = 1
+
+[sub_resource type="Resource" id="Resource_7befp"]
+script = ExtResource("5_1cnjx")
+recipes = Array[ExtResource("4_fork4")]([SubResource("Resource_4st0m")])
+
+[sub_resource type="Resource" id="Resource_asuph"]
+script = ExtResource("6_sw0em")
+texture = ExtResource("7_cqq2a")
+start_frame = 2
+end_frame = 5
+frame_duration = 0.2
+
+[sub_resource type="Resource" id="Resource_gpl2c"]
+script = ExtResource("6_sw0em")
+texture = ExtResource("7_cqq2a")
+start_frame = 1
+end_frame = 1
+frame_duration = 0.2
+
+[sub_resource type="Resource" id="Resource_xwu5p"]
+script = ExtResource("6_sw0em")
+texture = ExtResource("7_cqq2a")
+start_frame = 0
+end_frame = 0
+frame_duration = 0.2
+
+[sub_resource type="Resource" id="Resource_j1iva"]
+script = ExtResource("6_v87k6")
+processing_time = 1.0
+crafting_recipes = SubResource("Resource_7befp")
+craft_range = 32
+idle_anim = SubResource("Resource_xwu5p")
+fuel_present_anim = SubResource("Resource_gpl2c")
+fuel_burning_anim = SubResource("Resource_asuph")
+fuel_attributes = Array[Resource("res://scripts/resources/item_attribute_data.gd")]([ExtResource("6_nys8k")])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uhb0"]
 atlas = ExtResource("2_lx66i")
@@ -12,6 +67,7 @@ region = Rect2(0, 0, 16, 32)
 script = ExtResource("1_f1ryk")
 height = 2
 preview_texture = SubResource("AtlasTexture_1uhb0")
+craft_zone = SubResource("Resource_j1iva")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4suq"]
 atlas = ExtResource("2_lx66i")
