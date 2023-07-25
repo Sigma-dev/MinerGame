@@ -38,6 +38,7 @@ func _on_exited_construction(area: Area2D):
 
 func update():
 	sprite_2d.texture = null
+	range_sprite.visible = false
 
 
 func _physics_process(delta):
@@ -61,6 +62,7 @@ func _process(delta):
 	if hovered_construction:
 		return
 	var player_pos = get_player_pos()
+	range_sprite.visible = true
 	range_sprite.global_position = player_pos
 	var pos = null
 	if slot_data.item_data.construction:
